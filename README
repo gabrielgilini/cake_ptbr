@@ -3,11 +3,19 @@ http://groups.google.com/group/cake-php-pt
 
 INSTRUÇÕES
 
+ - Instruções gerais
+   Copie todos os diretórios do cake_ptbr para o diretório raiz de sua aplicação (app)
+
  - Traduzindo as mensagens do core
    http://kiss.souagil.com.br/2008/09/traduzindo-o-core-de-sua-aplicacao-cakephp/
    
    Para traduzir as mensagens de sua aplicação CakePHP, copie o diretório locale
-   para a o diretório raiz (app).
+   para o diretório raiz.
    Após efetuar a cópia, insira a seguinte linha no arquivo app/config/core.php
       Configure::write('Config.language', 'pt-br'); 
 
+ - Inflections
+   http://blog.cakephp-brasil.org/2008/05/25/inflections-em-portugues/
+
+   Para adaptar as pluralizações do CakePHP para o português, copie o diretório
+   config para o diretório raiz.
