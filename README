@@ -1,0 +1,13 @@
+CakePHP em português
+http://groups.google.com/group/cake-php-pt
+
+INSTRUÇÕES
+
+ - Traduzindo as mensagens do core
+   http://kiss.souagil.com.br/2008/09/traduzindo-o-core-de-sua-aplicacao-cakephp/
+   
+   Para traduzir as mensagens de sua aplicação CakePHP, copie o diretório locale
+   para a o diretório raiz (app).
+   Após efetuar a cópia, insira a seguinte linha no arquivo app/config/core.php
+      Configure::write('Config.language', 'pt-br'); 
+
