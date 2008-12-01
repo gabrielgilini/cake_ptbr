@@ -1436,6 +1436,10 @@ msgstr "Erro no campo %s"
 msgid "New"
 msgstr "Novo"
 
+#: /cake/libs/view/scaffolds/index.ctp:31
+msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
+msgstr "Página %page% de %pages%, mostrando %current% registros de %count% no total, começando no registro %start%, terminando em %end%"
+
 #: /cake/libs/view/helpers/form.php:513
 #: /cake/libs/view/scaffolds/index.ctp:68
 #: /cake/libs/view/scaffolds/view.ctp:147
