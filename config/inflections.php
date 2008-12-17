@@ -1,7 +1,6 @@
-<code><span style="color: #000000">
 <?php
 /*
-* Por Sadjow Medeiros LeÃ£o (sadjow@gmail.com) - http://manual.cakephp.com.br/doku.php?id=inflections_portugues
+* Por Sadjow Medeiros Leão (sadjow@gmail.com) - http://manual.cakephp.com.br/doku.php?id=inflections_portugues
 * Atualizado por Juan Basso (jrbasso@cakephp-brasil.org)
 */
 
@@ -93,5 +92,4 @@
         'hifens' => 'hifen',
         'liquens' => 'liquen'
     ));
-?></span>
-</code>
+?>
