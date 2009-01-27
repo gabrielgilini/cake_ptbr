@@ -1,3 +1,4 @@
+# translation of core.po to
 # Portuguese translation of CakePHP Application
 # Copyright 2008 Gabriel Gilini <gabriel@souagil.com.br>
 # Generated from files:
@@ -72,21 +73,20 @@
 #  Revision: 7296 /cake/tests/test_app/views/posts/test_nocache_tags.ctp
 #  Revision: 7296 /cake/tests/cases/libs/file.test.php
 #  Revision: 7296 /cake/tests/cases/libs/i18n.test.php
-#
 #  Algumas strings de erro foram deixadas em inglês a fim de facilitar a busca pelo problema no google
 #  Por exemplo: linha 449 do arquivo http_socket.php <linha 1050>
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Cake de Fubá 0.1\n"
+"Project-Id-Version: core\n"
 "POT-Creation-Date: 2008-08-04 14:55-0300\n"
-"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
-"Last-Translator: Gabriel Gilini <gabriel@usosim.com.br>\n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-01-27 14:35-0200\n"
+"Last-Translator: \n"
+"Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: /app/webroot/test.php:101
 #: /cake/console/libs/templates/skel/webroot/test.php:101
@@ -1434,7 +1434,7 @@ msgstr "Erro no campo %s"
 
 #: /cake/libs/view/helpers/form.php:511
 msgid "New"
-msgstr "Novo"
+msgstr "Adicionar"
 
 #: /cake/libs/view/scaffolds/index.ctp:31
 msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
@@ -1732,7 +1732,7 @@ msgstr "Listar %s"
 #: /cake/libs/view/scaffolds/index.ctp:92
 #: /cake/libs/view/scaffolds/view.ctp:62;69;157
 msgid "New %s"
-msgstr "Novo %s"
+msgstr "Adicionar %s"
 
 #: /cake/libs/view/scaffolds/index.ctp:39
 msgid "Actions"
@@ -1886,3 +1886,4 @@ msgstr "Construa web sites rapidamente com CakePHP"
 #: /cake/tests/test_app/views/posts/test_nocache_tags.ctp:117
 msgid "Create an interactive production wiki using PHP"
 msgstr "Crie uma wiki de produção interativa usando PHP"
+
