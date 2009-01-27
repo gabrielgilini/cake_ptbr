@@ -965,7 +965,7 @@ msgstr "Scaffold não tem conexão com o banco de dados"
 #: /cake/libs/error.php:233
 #: /cake/libs/view/errors/missing_view.ctp:27
 msgid "Missing View"
-msgstr "Scaffold não tem conexão com o banco de dados"
+msgstr "View não encontrada"
 
 #: /cake/libs/error.php:248
 #: /cake/libs/view/errors/missing_layout.ctp:27
