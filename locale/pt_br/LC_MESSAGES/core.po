@@ -956,7 +956,7 @@ msgstr "Tentativa de acessar método privado na classe"
 #: /cake/libs/error.php:206
 #: /cake/libs/view/errors/missing_table.ctp:27
 msgid "Missing Database Table"
-msgstr "Tentativa de acessar método privado na classe"
+msgstr "Tabela não encontrada no banco de dados"
 
 #: /cake/libs/error.php:218
 msgid "Scaffold Missing Database Connection"
@@ -1886,4 +1886,3 @@ msgstr "Construa web sites rapidamente com CakePHP"
 #: /cake/tests/test_app/views/posts/test_nocache_tags.ctp:117
 msgid "Create an interactive production wiki using PHP"
 msgstr "Crie uma wiki de produção interativa usando PHP"
-
