@@ -206,7 +206,7 @@ msgstr "Houve um problema ao criar um novo %s '%s'."
 
 #: /cake/console/libs/acl.php:194
 msgid "Node Not Deleted"
-msgstr "Nó não detectado"
+msgstr "Nó não excluído"
 
 #: /cake/console/libs/acl.php:194
 msgid "There was an error deleting the %s. Check that the node exists"
@@ -214,7 +214,7 @@ msgstr "Houve um erro ao deletar o %s. Cheque se o nó existe"
 
 #: /cake/console/libs/acl.php:196
 msgid "%s deleted"
-msgstr "%s deletado"
+msgstr "%s excluído"
 
 #: /cake/console/libs/acl.php:216
 msgid "Error in setting new parent. Please make sure the parent node exists, and is not a descendant of the node specified."
@@ -308,7 +308,7 @@ msgstr "Para adicionar um nó no nível raiz, digite 'root' ou '/' como parâmtr
 
 #: /cake/console/libs/acl.php:375
 msgid "Deletes the ACL object with the given <node> reference (see 'create' for info on node references)."
-msgstr "Deleta o objeto ACL com a referência <nó> dada (veja 'create' para informação sobre referências de nós)."
+msgstr "Exclui o objeto ACL com a referência <nó> dada (veja 'create' para informação sobre referências de nós)."
 
 #: /cake/console/libs/acl.php:378
 msgid "Moves the ACL object specified by <node> beneath the parent ACL object specified by <parent>."
@@ -1139,7 +1139,7 @@ msgstr "Nenhuma id definido para %s::delete()"
 
 #: /cake/libs/controller/scaffold.php:358;361
 msgid "The %1$s with id: %2$d has been deleted."
-msgstr "O %1$s com id: %2$d foi deletado."
+msgstr "O %1$s com id: %2$d foi excluído."
 
 #: /cake/libs/controller/scaffold.php:365;368
 msgid "There was an error deleting the %1$s with id: %2$d"
@@ -1710,13 +1710,13 @@ msgstr "Canal de IRC do CakePHP"
 #: /cake/libs/view/scaffolds/index.ctp:69
 #: /cake/libs/view/scaffolds/view.ctp:148
 msgid "Delete"
-msgstr "Deletar"
+msgstr "Excluir"
 
 #: /cake/libs/view/scaffolds/edit.ctp:37
 #: /cake/libs/view/scaffolds/index.ctp:69
 #: /cake/libs/view/scaffolds/view.ctp:60;148
 msgid "Are you sure you want to delete"
-msgstr "Você tem certeza que quer deletar"
+msgstr "Você tem certeza que quer excluir"
 
 #: /cake/libs/view/scaffolds/edit.ctp:39
 msgid "List"
@@ -1761,7 +1761,7 @@ msgstr "Editar %s"
 
 #: /cake/libs/view/scaffolds/view.ctp:60
 msgid "Delete %s"
-msgstr "Deletar %s"
+msgstr "Excluir %s"
 
 #: /cake/libs/view/scaffolds/view.ctp:81;120
 msgid "Related %s"
