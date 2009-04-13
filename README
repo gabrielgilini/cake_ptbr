@@ -19,3 +19,7 @@ INSTRUÇÕES
 
    Para adaptar as pluralizações do CakePHP para o português, copie o diretório
    config para o diretório raiz.
+
+ - Validação
+   Para fazer validação no model, use o behavior 'CakeBr.Validacao'. Com ele será
+   possível fazer a validação de CPF, CNPJ, CEP e Telefone.
