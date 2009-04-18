@@ -104,15 +104,10 @@ class ValidacaoBehavior extends ModelBehavior {
 		if (!is_array($separadores)) {
 			$separadores = array($separadores);
 		}
-		$numeros = '';
 		if (strlen($data) < 8) {
 			return false;
 		} else {
-			for ($i = 0, $j = strlen($data); $i < $j; $i++) {
-				if (ctype_digit($data{$i})) {
-					$numeros .= $data{$i};
-				}
-			}
+			$numeros = preg_replace('/[^\d]/', '', $data);
 			if (strlen($numeros) < 8) {
 				return false;
 			}
