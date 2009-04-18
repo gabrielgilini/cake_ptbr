@@ -21,7 +21,7 @@ class ValidacaoBehavior extends ModelBehavior {
 			if (!preg_match('/\d{3}\.\d{3}\.\d{3}-\d{2}/', $data)) {
 				return false;
 			}
-			$numeros = substr(0, 3) . substr(4, 3) . substr(8, 3) . substr(12, 2);
+			$numeros = substr($data, 0, 3) . substr($data, 4, 3) . substr($data, 8, 3) . substr($data, 12, 2);
 		}
 		// Testar se todos os números estão iguais
 		for ($i = 0; $i <= 9; $i++) {
@@ -67,7 +67,7 @@ class ValidacaoBehavior extends ModelBehavior {
 			if (!preg_match('/\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}/', $data)) {
 				return false;
 			}
-			$numeros = substr(0, 2) . substr(3, 3) . substr(7, 3) . substr(11, 4) . substr(16, 2);
+			$numeros = substr($data, 0, 2) . substr($data, 3, 3) . substr($data, 7, 3) . substr($data, 11, 4) . substr($data, 16, 2);
 		}
 		// Testar o dígito verificador
 		for ($pos = 12; $pos <= 13; $pos++) {
@@ -104,8 +104,24 @@ class ValidacaoBehavior extends ModelBehavior {
 		if (!is_array($separadores)) {
 			$separadores = array($separadores);
 		}
+		$numeros = '';
+		if (strlen($data) < 8) {
+			return false;
+		} else {
+			for ($i = 0, $j = strlen($data); $i < $j; $i++) {
+				if (ctype_digit($data{$i})) {
+					$numeros .= $data{$i};
+				}
+			}
+			if (strlen($numeros) < 8) {
+				return false;
+			}
+		}
+		$primeiraParte = substr($numeros, 0, 5);
+		$segundaParte = substr($numeros, -3);
 		foreach ($separadores as $separador) {
-			if (preg_match('/\d{5}' . $separador . '\d{3}/', $data)) {
+			$formatado = $primeiraParte . $separador . $segundaParte;
+			if ($formatado == $data) {
 				return true;
 			}
 		}
@@ -128,13 +144,13 @@ class ValidacaoBehavior extends ModelBehavior {
 			}
 			return false;
 		}
-		if (preg_match('/\d{4}-\d{4}/', $data)) { // 9999-9999
+		if (preg_match('/^\d{4}-\d{4}$/', $data)) { // 9999-9999
 			return true;
 		}
-		if (preg_match('/\(\d{2}\) ?\d{4}-\d{4}/', $data)) { // (99) 9999-9999 ou (48)9999-9999
+		if (preg_match('/^\(\d{2}\) ?\d{4}-\d{4}$/', $data)) { // (99) 9999-9999 ou (48)9999-9999
 			return true;
 		}
-		if (preg_match('/+\d{2} ?\(\d{2}\) ?\d{4}-\d{4}/', $data)) { // +55 (99) 9999-9999
+		if (preg_match('/^\+\d{2} ?\(\d{2}\) ?\d{4}-\d{4}$/', $data)) { // +55 (99) 9999-9999
 			return true;
 		}
 		return false;
