@@ -21,5 +21,7 @@ INSTRUÇÕES
    config para o diretório raiz.
 
  - Validação
+   http://blog.cakephp-brasil.org/2009/04/18/validacoes-brasileiras/
+ 
    Para fazer validação no model, use o behavior 'CakeBr.Validacao'. Com ele será
    possível fazer a validação de CPF, CNPJ, CEP e Telefone.
