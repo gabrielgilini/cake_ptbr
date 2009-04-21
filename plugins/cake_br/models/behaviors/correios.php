@@ -5,7 +5,9 @@ define('CORREIOS_SEDEX', 40010);
 define('CORREIOS_SEDEX_A_COBRAR', 40045);
 define('CORREIOS_SEDEX_10', 40215);
 define('CORREIOS_SEDEX_HOJE', 40290);
+define('CORREIOS_E_SEDEX', 81019);
 define('CORREIOS_ENCOMENDA_NORMAL', 41017);
+define('CORREIOS_PAC', 41106);
 
 // Erros
 define('ERRO_CORREIOS_PARAMETROS_INVALIDOS', -1000);
@@ -76,10 +78,20 @@ class CorreiosBehavior extends ModelBehavior {
 		}
 		$Xml = new Xml($retornoCorreios);
 		$infoCorreios = $Xml->toArray();
-		if (!isset($infoCorreios['calculo_precos']['dados_postais'])) {
+		if (!isset($infoCorreios['CalculoPrecos']['DadosPostais'])) {
 			return ERRO_CORREIOS_CONTEUDO_INVALIDO;
 		}
-		return $infoCorreios['calculo_precos']['dados_postais'];
+		extract($infoCorreios['CalculoPrecos']['DadosPostais']);
+		return array(
+			'ufOrigem' => $uf_origem,
+			'ufDestino' => $uf_destino,
+			'capitalOrigem' => ($local_origem == 'Capital'),
+			'capitalDestino' => ($local_destino == 'Capital'),
+			'valorMaoPropria' => $mao_propria,
+			'valorTarifaValorDeclarado' => $tarifa_valor_declarado,
+			'valorFrete' => ($preco_postal - $tarifa_valor_declarado - $mao_propria),
+			'valorTotal' => $preco_postal
+		);
 	}
 
 }
