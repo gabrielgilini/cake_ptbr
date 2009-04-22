@@ -6,7 +6,8 @@ class CakeBrValidacaoCase extends CakeTestCase {
 
 	var $Validacao = null;
 
-	function startTest() {
+	function setUp() {
+		parent::setUp();
 		$this->Validacao = new ValidacaoBehavior();
 	}
 
