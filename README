@@ -30,3 +30,8 @@ INSTRUÇÕES
    http://blog.cakephp-brasil.org/2009/04/21/behavior-com-metodos-dos-correios/
 
    Funções para cálculo de frete e informações dos endereço de um determinado CEP.
+
+ - Formatação (Plugin CakeBr)
+   http://blog.cakephp-brasil.org/2009/04/22/formatacao-no-estilo-brasileiro/
+
+   Helper para formatação de datas e números no formato brasileiro.
