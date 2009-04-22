@@ -6,7 +6,8 @@ class CakeBrCorreiosCase extends CakeTestCase {
 
 	var $Correios = null;
 
-	function startTest() {
+	function setUp() {
+		parent::setUp();
 		$this->Correios = new CorreiosBehavior();
 	}
 
