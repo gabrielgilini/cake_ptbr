@@ -1,4 +1,14 @@
 <?php
+/**
+ * Behavior de acesso a serviços dos Correios
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 // Tipo de frete
 define('CORREIOS_SEDEX', 40010);
