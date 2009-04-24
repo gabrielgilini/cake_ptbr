@@ -1,8 +1,8 @@
 <?php
 
-App::import('Helper', array('CakeBr.Formatacao', 'Time', 'Number'));
+App::import('Helper', array('CakePtbr.Formatacao', 'Time', 'Number'));
 
-class CakeBrFormatacaoCase extends CakeTestCase {
+class CakePtbrFormatacaoCase extends CakeTestCase {
 
 	var $Formatacao = null;
 

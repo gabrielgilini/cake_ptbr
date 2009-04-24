@@ -1,8 +1,8 @@
 <?php
 
-App::import('Behavior', 'CakeBr.Validacao');
+App::import('Behavior', 'CakePtbr.Validacao');
 
-class CakeBrValidacaoCase extends CakeTestCase {
+class CakePtbrValidacaoCase extends CakeTestCase {
 
 	var $Validacao = null;
 

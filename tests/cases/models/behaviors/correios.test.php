@@ -1,8 +1,8 @@
 <?php
 
-App::import('Behavior', 'CakeBr.Correios');
+App::import('Behavior', 'CakePtbr.Correios');
 
-class CakeBrCorreiosCase extends CakeTestCase {
+class CakePtbrCorreiosCase extends CakeTestCase {
 
 	var $Correios = null;
 

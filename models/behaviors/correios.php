@@ -15,7 +15,7 @@ define('ERRO_CORREIOS_EXCESSO_PESO', -1001);
 define('ERRO_CORREIOS_FALHA_COMUNICACAO', -1002);
 define('ERRO_CORREIOS_CONTEUDO_INVALIDO', -1003);
 
-App::import('Behavior', 'CakeBr.Validacao');
+App::import('Behavior', 'CakePtbr.Validacao');
 App::import('Core', array('HttpSocket', 'Xml'));
 
 class CorreiosBehavior extends ModelBehavior {
