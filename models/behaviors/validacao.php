@@ -1,4 +1,14 @@
 <?php
+/**
+ * Behavior de validação de CPF, CNPJ, CEP e Telefone
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 class ValidacaoBehavior extends ModelBehavior {
 

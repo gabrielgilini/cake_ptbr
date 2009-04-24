@@ -1,8 +1,15 @@
 <?php
-/*
-* Por Sadjow Medeiros Leão (sadjow@gmail.com) - http://manual.cakephp.com.br/doku.php?id=inflections_portugues
-* Atualizado por Juan Basso (jrbasso@cakephp-brasil.org)
-*/
+/**
+ * Regras de pluralização e singualização do português
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Sadjow Medeiros Leão <sadjow@gmail.com>
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
     $pluralRules = array(
         '/^([a-zA-Z]*)ao$/i' => '\1oes',

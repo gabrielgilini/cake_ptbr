@@ -1,4 +1,14 @@
 <?php
+/**
+ * Instalador do plugin CakePtbr com PluginManager
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 if (App::import('Vendor', 'PluginManager.Installer')) {
 	class CakePtbrInstaller extends InstallerPM {
