@@ -1,0 +1,224 @@
+h1. CakePHP em português
+
+Caso você tenha dúvidas, elogios, reclamações, sugestões, etc., acesse o
+"Grupo de discursão CakePHP-PT":http://groups.google.com/group/cakephp-pt e envie uma mensagem.
+
+h2. Instruções gerais
+
+Copie todos os diretórios deste diretório para dentro da pasta app/plugins/cake_ptbr (crie a pasta se necessário).
+
+Para instalar as mensagens de core e as inflections em português, adicione a seguinte linha no arquivo
+app/config/bootstrap.php:
+
+<pre>
+require APP . 'plugins' . DS . 'cake_ptbr' . DS . 'config' . DS . 'bootstrap.php';
+</pre>
+
+O código anterior não é necessário para utilização dos behaviors e helpers.
+
+Todos os recursos possuem testes unitários.
+
+h2. Recursos disponíveis no plugin
+
+h3. Traduzindo as mensagens do core - "Referência":http://kiss.souagil.com.br/2008/09/traduzindo-o-core-de-sua-aplicacao-cakephp/
+
+Ao incluir a linha no bootstrap (conforme as instruções nas informações gerais), as mensagens geradas pelo CakePHP serão traduzidas
+para português brasileiro. Frases de estar faltando controller, view, etc. são exemplos de frases que serão traduzidas.
+
+h3. Inflections  - "Referência":http://blog.cakephp-brasil.org/2008/05/25/inflections-em-portugues/
+
+Inflections são regras de como as palavras serão pluralizadas e singualizadas. O CakePHP nativamente trás as regras para o inglês,
+porém as palavras em português ficam erradas. Por exemplo, nativamente o CakePHP considera a palavra 'computadors' como o plural de
+'computador'.
+
+As inflections afetam também as palavras usadas como nome de tabelas no banco de dados.
+
+h3. Validação (Behavior) - "Referência":http://blog.cakephp-brasil.org/2009/04/18/validacoes-brasileiras/
+
+O behavior Validacao serve para fazer validações de CPF, CNPJ, CEP e número de telefone.
+
+h4. Instalação
+
+Adicione o behavior 'CakePtbr.Validacao' no seu model através da variável actsAs. Exemplo:
+
+<pre>
+class Usuario extends AppModel {
+	var $name = 'Usuario';
+	var $actsAs = array('CakePtbr.Validacao');
+}
+</pre>
+
+h4. Utilização
+
+h5. CPF
+
+<pre>
+	var $validates = array(
+		'cpf' => array(
+			'rule' => 'cpf'
+		)
+	);
+</pre>
+
+Se a regra for declarada apenas como cpf (idem exemplo acima), ele irá validar o CPF no formato XXX.XXX.XXX-XX e também fará
+o teste do dígito verificador (dois últimos números) para verificar se é um CPF válido.  Em determinadas situações, deseja-se
+enviar pro banco apenas os números, sem a formatação, pra isso, coloquei um parâmetro opcional que pode ser passado para fazer
+este teste. Na rule, deve ser colocado:
+
+<pre>
+	var $validates = array(
+		'cpf' => array(
+			'rule' => array('cpf', true)
+		)
+	);
+</pre>
+
+Deste modo ele irá validar apenas números.
+
+h5. CNPJ
+
+Mesmo funcionamento do CPF, porém para CNPJ. A regra de apenas números também é válida. O formato do CPNJ é considerado XX.XXX.XXX/XXXX-XX.
+
+h5. CEP
+
+O CEP, por padrão vai ser considerado nos formatos XXXXXXXX ou XXXXX-XXX. Caso queira alterar o separador, você pode definir da seguinte maneira:
+
+<pre>
+	var $validates = array(
+		'cep' => array(
+			'rule' => array('cep', array('', '-', '.'))
+		)
+	);
+</pre>
+
+No exemplo acima, ele vai validar os valores padrões e XXXXX.XXX.
+
+h5. Telefone
+
+A validação do telefone se dará através das formatações:
+
+* XXXX-XXXX
+* (XX) XXXX-XXX (o espaço entre o fechamento de parênteses e o número é opcional, mas limitado a 1 espaço)
+* +XX (XX) XXXX-XXXX (idem anterior sobre o espaçamento)
+
+h3. Correios (Behavior) - "Referência":http://blog.cakephp-brasil.org/2009/04/21/behavior-com-metodos-dos-correios/
+
+Métodos para acessar recursos dos Correios brasileiro.
+
+h4. Instalação
+
+Adicione o behavior 'CakePtbr.Correios' no seu model através da variável actsAs. Exemplo:
+
+<pre>
+class Entrega extends AppModel {
+	var $name = 'Entrega';
+	var $actsAs = array('CakePtbr.Correios');
+}
+</pre>
+
+h4. Utilização
+
+h5. Cálculo de valor de frete
+
+O método para calcular o frete chama-se 'valorFrete' e tem os seguintes parâmetros:
+
+* servico: define o tipo de serviço que será feito. Os valores válidos são através das constantes: CORREIOS_SEDEX, CORREIOS_SEDEX_A_COBRAR, CORREIOS_SEDEX_10, CORREIOS_SEDEX_HOJE, CORREIOS_E_SEDEX, CORREIOS_ENCOMENDA_NORMAL, CORREIOS_PAC.
+* cepOrigem: Cep de origem no formato XXXXX-XXX.
+* cepDestino: Cep de destino no formato XXXXX-XXX.
+* peso: Peso, em quilos, do item a ser transportado. O valor deve ser um número e não deve ultrapassar 30.
+* maoPropria:(opcional. Padrão falso) Valor boleano para indicar se o transporte é com mão prórpria.
+* valorDeclarado: (opcional. Padrão 0.00) Valor do item a ser transportado.
+* avisoRecebimento: (opcional. Padrão falso) Calculo com aviso de recebimento.
+
+O retorno será negativo em caso de erro, que podem ser as constantes:
+
+* ERRO_CORREIOS_PARAMETROS_INVALIDOS: Um ou mais parâmetros com formato ou conteúdo inválido.
+* ERRO_CORREIOS_EXCESSO_PESO: Peso acima do limite (30 Kg).
+* ERRO_CORREIOS_FALHA_COMUNICACAO: Problema de comunicação com o site dos Correios.
+* ERRO_CORREIOS_CONTEUDO_INVALIDO: O conteúdo retornado pelo Correios não é o esperado.
+
+Em caso de sucesso, será retornado um array com os seguintes indices:
+
+* ufOrigem: UF da Origem
+* ufDestino: UF do Destino
+* capitalOrigem: Valor booleano indicando se a origem é considerada capital
+* capitalDestino: Valor booleando indicando se o destino é considerado capital
+* valorMaoPropria: Valor, em reais, da mão própria
+* valorTarifaValorDeclarado: Valor da tarifa pelo valor declarado
+* valorFrete: Valor apenas do frente, sem incluir os valores de mão própria e tarifa do valor declarado
+* valorTotal: Soma de todos os valores anteriores
+
+Exemplo de uso:
+
+<pre>
+class Entrega extends AppModel {
+	var $name = 'Entrega';
+	var $actsAs = array('CakePtbr.Correios');
+
+	function frete($cepDestino) {
+		// Supondo que é uma loja que transporta produtos pequenos (até 1Kg)
+		return $this->valorFrete(CORREIOS_SEDEX, Configure::read('Loja.CEP'), $cepDestino, 1.0);
+	}
+}
+</pre>
+
+h5. Endereço de um CEP
+
+O método 'endereco' informa o endereço baseado em algum CEP. O único parâmetro é o CEP no formato XXXXX-XXX. Os valores de retorno podem
+ser as constantes ERRO_CORREIOS_PARAMETROS_INVALIDOS, ERRO_CORREIOS_FALHA_COMUNICACAO ou ERRO_CORREIOS_CONTEUDO_INVALIDO em caso de erro.
+Em caso de sucesso, o retorno será um array com os indices logradouro, bairro, cidade e uf.
+
+Exemplo de uso:
+
+<pre>
+class Endereco extends AppModel {
+	var $name = 'Endereco';
+	var $actsAs = array('CakePtbr.Correios');
+ 
+	function beforeSave($options) {
+		$endereco = $this->endereco($this->data['Endereco']['CEP']);
+		if ($endereco < 0) {
+			return false;
+		}
+		$this->data['Endereco'] = array_merge($this->data['Endereco'], $endereco); // Aqui serão incluídas as informações de logradouro, bairro, cidade e uf.
+	}
+}
+</pre>
+
+h3. Formatação (Helper) - "Referência":http://blog.cakephp-brasil.org/2009/04/22/formatacao-no-estilo-brasileiro/
+
+Helper para formatação de datas e números no formato brasileiro.
+
+h4. Instalação
+
+Adicione o helper 'CakePtbr.Formatacao' no seu controller através da variável helpers. Exemplo:
+
+<pre>
+class PedidosControllers extends AppController {
+	var $name = 'Pedidos';
+	var $helpers = array('CakePtbr.Formatacao');
+
+	function index() {
+		// Qualquer código...
+	}
+}
+</pre>
+
+h4. Utilização
+
+Abaixo segue a lista dos métodos existentes no helper, com os parâmetros esperados e uma breve descrição.
+
+* data($data = null)
+** Formata uma data timestamp no formato dd/mm/YYYY. Se não for informada a data, será utilizada a data atual
+* dataHora($dataHora = null, $segundos = true)
+** Idem anterior, porém com a informação da hora junto.
+* dataCompleta($dataHora = null)
+** Mostra a data completa. Exemplo: ‘terça-feira, 21 de abril de 2009, 10:00:00′.
+* precisao($numero, $casasDecimais = 3)
+** Similar ao método precision do helper Time, mostrando os números no formato brasileiro.
+* porcentagem($numero, $casasDecimais = 2)
+** Mostra o valor em porcentos, similar ao toPorcentage do TimeHelper.
+* moeda($valor, $opcoes = array())
+** Mostra o valor em reais. Exemplo: R$ 10,20.
+* moedaPorExtenso($numero)
+** Escreve o valor por extenso, em reais.
