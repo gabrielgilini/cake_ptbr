@@ -6,7 +6,7 @@ INSTRUÇÕES
  - Instruções gerais
    Copie todos os diretórios deste diretório para dentro da pasta app/plugins/cake_ptbr (crie a pasta se necessário).
    Adicione a seguinte linha no arquivo app/config/bootstrap.php (isto ativa o Inflections e traduções do core):
-   require dirname(dirname(__FILE__)) . DS . 'plugins' . DS . 'cake_ptbr' . DS . 'config' . DS . 'bootstrap.php';
+   require APP . 'plugins' . DS . 'cake_ptbr' . DS . 'config' . DS . 'bootstrap.php';
 
  - Traduzindo as mensagens do core
    http://kiss.souagil.com.br/2008/09/traduzindo-o-core-de-sua-aplicacao-cakephp/
