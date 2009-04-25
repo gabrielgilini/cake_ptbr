@@ -82,7 +82,7 @@ class CorreiosBehavior extends ModelBehavior {
 				'avisoRecebimento' => $avisoRecebimento
 			)
 		);
-		$retornoCorreios = $HttpSocket->get($uri);
+		$retornoCorreios = trim($HttpSocket->get($uri));
 		if ($HttpSocket->response['status']['code'] != 200) {
 			return ERRO_CORREIOS_FALHA_COMUNICACAO;
 		}
