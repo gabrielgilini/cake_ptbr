@@ -185,6 +185,46 @@ class Endereco extends AppModel {
 }
 </pre>
 
+h3. AjusteData (Behavior)
+
+Behavior para ajustar as horas no formato dd/mm/yyyy para o formato SQL (yyyy-mm-dd).
+
+h4. Instalação
+
+Adicione o behavior 'CakePtbr.AjusteHora' no seu model através da variável actsAs, porém neste behavior tem uma diferença em relação aos demais.
+É possível adicionar o behavior de três maneiras:
+
+* Não informando os campos: Neste caso, o behavior buscará automaticamente todos os campos do tipo date no model, exceto os campos update,
+create e modified;
+* Informando como string: Será considerado apenas o campo da string;
+* Informando um array: Cada item do array será considerado um campo para alteração do formato.
+
+ Exemplo:
+
+<pre>
+class Noticia extends AppModel {
+	var $name = 'Noticia';
+	var $actsAs = array('CakePtbr.AjusteHora'); // Primeiro caso
+	var $actsAs = array('CakePtbr.AjusteHora' => 'campo_data'); // Segundo caso
+	var $actsAs = array('CakePtbr.AjusteHora' => array('publicado', 'informado')); // Terceiro caso
+}
+</pre>
+
+h4. Utilização
+
+A utilização é automática.
+
+h4. Funcionamento
+
+Na sua view, o usuário vai preencher um campo com o formato dd/mm/yyyy, porém este campo deve ser alterado para ser cadastrado no banco
+de dados. Para evitar que isto seja no controller ou num beforeSave de vários models, basta incluir este behavior.
+
+Antes de cada save o behavior ajusta as datas dos campos informados (ou encontrados automaticamente) e então envia para o banco de dados
+com os valores corretos.
+
+Ao resgatar o registro do banco, este behavior NÃO transforma para o formato brasileiro, pois o model manipula dados e não formatações.
+Caso você vá exibir a data, use o helper de formatação deste plugin.
+
 h3. Formatação (Helper) - "Referência":http://blog.cakephp-brasil.org/2009/04/22/formatacao-no-estilo-brasileiro/
 
 Helper para formatação de datas e números no formato brasileiro.
