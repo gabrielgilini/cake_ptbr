@@ -12,13 +12,53 @@
 
 App::import('Behavior', 'CakePtbr.Correios');
 
+class CorreiosBehaviorTest extends CorreiosBehavior {
+
+	var $conectado = true;
+	var $_valorFrete = array(
+		'ufOrigem' => 'SC',
+		'ufDestino' => 'SC',
+		'capitalOrigem' => true,
+		'capitalDestino' => true,
+		'valorMaoPropria' => 0,
+		'valorTarifaValorDeclarado' => 0,
+		'valorFrete' => 22.5,
+		'valorTotal' => 22.5
+	);
+
+	var $_endereco = array(
+		'logradouro' => 'Rua Acadêmico Reinaldo Consoni',
+		'bairro' => 'Santa Mônica',
+		'cidade' => 'Florianópolis',
+		'uf' => 'SC'
+	);
+
+
+	function valorFrete($servico, $cepOrigem, $cepDestino, $peso, $maoPropria = false, $valorDeclarado = 0.0, $avisoRecebimento = false) {
+		$retorno = parent::valorFrete($servico, $cepOrigem, $cepDestino, $peso, $maoPropria, $valorDeclarado, $avisoRecebimento);
+		if ($retorno === ERRO_CORREIOS_FALHA_COMUNICACAO) {
+			return $this->_valorFrete;
+		}
+		return $retorno;
+	}
+
+	function endereco($cep) {
+		$retorno = parent::endereco($cep);
+		if ($retorno === ERRO_CORREIOS_FALHA_COMUNICACAO) {
+			return $this->_endereco;
+		}
+		return $retorno;
+	}
+
+}
+
 class CakePtbrCorreiosCase extends CakeTestCase {
 
 	var $Correios = null;
 
 	function setUp() {
 		parent::setUp();
-		$this->Correios = new CorreiosBehavior();
+		$this->Correios = new CorreiosBehaviorTest();
 	}
 
 	function testValorFrete() {
