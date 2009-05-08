@@ -18,6 +18,9 @@ class CakePtbrInflectionsCase extends CakeTestCase {
 		$this->assertEqual(Inflector::pluralize('Motor'), 'Motores');
 		$this->assertEqual(Inflector::pluralize('Bordel'), 'Bordeis');
 		$this->assertEqual(Inflector::pluralize('palavra_chave'), 'palavra_chaves');
+		$this->assertEqual(Inflector::pluralize('Abril'), 'Abris');
+		$this->assertEqual(Inflector::pluralize('Azul'), 'Azuis');
+		$this->assertEqual(Inflector::pluralize('Alcool'), 'Alcoois');
 		// irregulares
 		$this->assertEqual(Inflector::pluralize('Perfil'), 'Perfis');
 		$this->assertEqual(Inflector::pluralize('Alemao'), 'Alemaes');
@@ -33,6 +36,9 @@ class CakePtbrInflectionsCase extends CakeTestCase {
 		$this->assertEqual(Inflector::singularize('Motores'), 'Motor');
 		$this->assertEqual(Inflector::singularize('Bordeis'), 'Bordel');
 		$this->assertEqual(Inflector::singularize('palavras_chaves'), 'palavras_chave');
+		$this->assertEqual(Inflector::singularize('Abris'), 'Abril');
+		$this->assertEqual(Inflector::singularize('Azuis'), 'Azul');
+		$this->assertEqual(Inflector::singularize('Alcoois'), 'Alcool');
 		// irregulares
 		$this->assertEqual(Inflector::singularize('Perfis'), 'Perfil');
 		$this->assertEqual(Inflector::singularize('Alemaes'), 'Alemao');
