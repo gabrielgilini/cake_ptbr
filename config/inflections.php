@@ -38,7 +38,8 @@
     $uninflectedPlural = array('atlas', 'lapis', 'onibus', 'pires', 'virus', '.*x');
 
     $irregularPlural = array(
-        'alemao' => 'alemaes',
+		'abdomens' => 'abdomen',
+		'alemao' => 'alemaes',
         'artesa' => 'artesaos',
         'bencao' => 'bencaos',
         'cao' => 'caes',
@@ -51,14 +52,18 @@
         'cristao' => 'cristaos',
         'dificil' => 'dificeis',
         'escrivao' => 'escrivaes',
-        'fossel,' => 'fosseis',
+        'fossel' => 'fosseis',
+		'germens' => 'germen',
         'grao' => 'graos',
+		'hifens' => 'hifen',
         'irmao' => 'irmaos',
+		'liquens' => 'liquen',
         'mal' => 'males',
         'mao' => 'maos',
         'orfao' => 'orfaos',
         'pais' => 'paises',
         'pao' => 'paes',
+		'perfil' => 'perfis',
         'projetil' => 'projeteis',
         'reptil' => 'repteis',
         'sacristao' => 'sacristaes',
@@ -93,10 +98,5 @@
 
     $uninflectedSingular = $uninflectedPlural;
 
-    $irregularSingular = array_merge(array_flip($irregularPlural), array(
-        'abdomens' => 'abdomen',
-        'germens' => 'germen',
-        'hifens' => 'hifen',
-        'liquens' => 'liquen'
-    ));
+    $irregularSingular = array_flip($irregularPlural);
 ?>
