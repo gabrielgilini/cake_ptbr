@@ -1,4 +1,14 @@
 <?php
+/**
+ * Vendor para centralizar a lista de estados brasileiros
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 class Estados {
 

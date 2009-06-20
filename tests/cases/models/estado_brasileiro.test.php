@@ -1,4 +1,14 @@
 <?php
+/**
+ * Teste do Model EstadoBrasileiro
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 App::import('Model', 'CakePtbr.EstadoBrasileiro');
 
