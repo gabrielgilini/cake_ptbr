@@ -33,6 +33,59 @@ porém as palavras em português ficam erradas. Por exemplo, nativamente o CakeP
 
 As inflections afetam também as palavras usadas como nome de tabelas no banco de dados.
 
+h3. EstadoBrasileiro (Model)
+
+O model EstadoBrasileiro contém informações sobre os estados brasileiros, podendo ser utilizado para auxiliar ou associar com outros
+modelos. Também poderá servir de base para outros modelos.
+
+h4. Instalação e Utilização
+
+Utilizar no controller:
+
+<pre>
+class XxxsController extends AppController {
+	var $name = 'Xxxs';
+	var $uses = array('Xxx', 'CakePtbr.EstadoBrasileiro');
+
+	function index() {
+		$this->EstadoBrasileiro->find('list');
+	}
+}
+</pre>
+
+Criando uma model:
+
+<pre>
+App::import('Model', 'CakePtbr.EstadoBrasileiro');
+
+class Estado extends EstadoBrasileiro {
+...
+}
+</pre>
+
+A model EstadoBrasileiro estende a AppModel. Logo, todos os métodos utilizados na sua AppModel serão aplicados neste novo model.
+
+Métodos disponíveis no model:
+
+* listaEstados($incluirDF = true)
+** Gera uma lista com os estados, sendo a chave a sigla e o valor o nome do estado.
+* todosEstados($incluirDF = true)
+** Lista os estados, mas no formato array('EstadoBrasileiro' => array(array('sigla' => 'SC', 'nome' => 'Santa Catarina'), ...)).
+* estadoPorSigla($sigla)
+** Informa o nome do estado através da sigla. Por exemplo, passando 'SC' como parâmetro, é retornado 'Santa Catarina'.
+* siglaPorEstado($estado)
+** Inverso do método anterior.
+* estadosDoSul()
+** Apresenta uma lista com os estados da região sul. A lista virá no mesmo formato de listaEstados.
+* estadosDoSudeste()
+** Idem estadosDoSul, mas para região sudeste.
+* estadosDoCentroOeste($incluirDF = true)
+** Idem estadosDoSul, mas para região centro-oeste. É possível informar se será incluído o Distrito Federal.
+* estadosDoNorte()
+** Idem estadosDoSul, mas para região norte.
+* estadosDoNordeste()
+** Idem estadosDoSul, mas para região nordeste.
+
 h3. Validação (Behavior) - "Referência":http://blog.cakephp-brasil.org/2009/04/18/validacoes-brasileiras/
 
 O behavior Validacao serve para fazer validações de CPF, CNPJ, CEP e número de telefone.
@@ -262,3 +315,36 @@ Abaixo segue a lista dos métodos existentes no helper, com os parâmetros esper
 ** Mostra o valor em reais. Exemplo: R$ 10,20.
 * moedaPorExtenso($numero)
 ** Escreve o valor por extenso, em reais.
+
+h3. Estados (Helper)
+
+Helper para apresentar os estados brasileiros.
+
+h4. Instalação
+
+Adicione o helper 'CakePtbr.Estados' no seu controller através da variável helpers. Exemplo:
+
+<pre>
+class PedidosControllers extends AppController {
+	var $name = 'Pedidos';
+	var $helpers = array('CakePtbr.Estados');
+
+	function index() {
+		// Qualquer código...
+	}
+}
+</pre>
+
+h4. Utilização
+
+Na sua view, utilizar da forma similar ao método select do helper Form, exceto pelo parâmetro options. Exemplo:
+
+<pre>
+echo $estados->select('Model.uf'); // Exibirá um select com todos os estados
+echo $estados->select('Model.uf', 'SC'); // Exibirá um select com todos os estados, deixando Santa Catarina como selecionada
+echo $estados->select('Model.uf', null, array('uf' => true)); // Exibirá o select. O valor que irá aparecer serão apenas as siglas
+</pre>
+
+Em todos os casos anteriores, o valor do campo será a sigla (2 caracteres). Vale lembrar que é possível
+utilizar todos os mesmos parâmetros do "select do form":http://book.cakephp.org/pt/view/728/select , exceto o campo @$options@, que foi
+suprimido. Além disso, o valor padrão de @$showEmpty@ agora é @false@ ao invés de @''@ (ou seja, não irá apresentar campo vazio).
