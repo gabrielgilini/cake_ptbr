@@ -4,35 +4,13 @@ class EstadoBrasileiro extends AppModel {
 
 	var $name = 'EstadoBrasileiro';
 	var $useTable = false;
-	var $_estados = array(
-		'AC' => 'Acre',
-		'AL' => 'Alagoas',
-		'AP' => 'Amapá',
-		'AM' => 'Amazonas',
-		'BA' => 'Bahia',
-		'CE' => 'Ceará',
-		'DF' => 'Distrito Federal',
-		'ES' => 'Espírito Santo',
-		'GO' => 'Goiás',
-		'PA' => 'Pará',
-		'PB' => 'Paraíba',
-		'PR' => 'Paraná',
-		'PE' => 'Pernambuco',
-		'PI' => 'Piauí',
-		'MA' => 'Maranhão',
-		'MT' => 'Mato Grosso',
-		'MS' => 'Mato Grosso do Sul',
-		'MG' => 'Minas Gerais',
-		'RJ' => 'Rio de Janeiro',
-		'RN' => 'Rio Grande do Norte',
-		'RS' => 'Rio Grande do Sul',
-		'RO' => 'Rondônia',
-		'RR' => 'Roraima',
-		'SC' => 'Santa Catarina',
-		'SP' => 'São Paulo',
-		'SE' => 'Sergipe',
-		'TO' => 'Tocantins'
-	);
+
+	function __construct($id = false, $table = null, $ds = null) {
+		parent::__construct();
+
+		App::import('Vendor', 'CakePtbr.Estados');
+		$this->_estados = Estados::lista();
+	}
 
 	function find($conditions = null, $fields = array(), $order = null, $recursive = null) {
 		if (is_string($conditions)) {
