@@ -35,7 +35,8 @@ class CorreiosBehaviorTest extends CorreiosBehavior {
 
 
 	function valorFrete($servico, $cepOrigem, $cepDestino, $peso, $maoPropria = false, $valorDeclarado = 0.0, $avisoRecebimento = false) {
-		$retorno = parent::valorFrete($servico, $cepOrigem, $cepDestino, $peso, $maoPropria, $valorDeclarado, $avisoRecebimento);
+		$model = null;
+		$retorno = parent::valorFrete($model, $servico, $cepOrigem, $cepDestino, $peso, $maoPropria, $valorDeclarado, $avisoRecebimento);
 		if ($retorno === ERRO_CORREIOS_FALHA_COMUNICACAO) {
 			return $this->_valorFrete;
 		}
@@ -43,7 +44,8 @@ class CorreiosBehaviorTest extends CorreiosBehavior {
 	}
 
 	function endereco($cep) {
-		$retorno = parent::endereco($cep);
+		$model = null;
+		$retorno = parent::endereco($model, $cep);
 		if ($retorno === ERRO_CORREIOS_FALHA_COMUNICACAO) {
 			return $this->_endereco;
 		}

@@ -30,7 +30,7 @@ App::import('Core', array('HttpSocket', 'Xml'));
 
 class CorreiosBehavior extends ModelBehavior {
 
-	function valorFrete($servico, $cepOrigem, $cepDestino, $peso, $maoPropria = false, $valorDeclarado = 0.0, $avisoRecebimento = false) {
+	function valorFrete(&$model, $servico, $cepOrigem, $cepDestino, $peso, $maoPropria = false, $valorDeclarado = 0.0, $avisoRecebimento = false) {
 		// Validação dos parâmetros
 		$tipos = array(CORREIOS_SEDEX, CORREIOS_SEDEX_A_COBRAR, CORREIOS_SEDEX_10, CORREIOS_SEDEX_HOJE, CORREIOS_ENCOMENDA_NORMAL);
 		if (!in_array($servico, $tipos)) {
@@ -104,7 +104,7 @@ class CorreiosBehavior extends ModelBehavior {
 		);
 	}
 
-	function endereco($cep) {
+	function endereco(&$model, $cep) {
 		$Validacao = new ValidacaoBehavior();
 		if (!$Validacao->_cep($cep, '-')) {
 			return ERRO_CORREIOS_PARAMETROS_INVALIDOS;
