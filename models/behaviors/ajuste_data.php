@@ -20,6 +20,13 @@ class AjusteDataBehavior extends ModelBehavior {
 		foreach ($this->campos[$model->name] as $campo) {
 			if (isset($data[$campo]) && preg_match('/\d{1,2}\/\d{1,2}\/\d{2,4}/', $data[$campo])) {
 				list($dia, $mes, $ano) = explode('/', $data[$campo]);
+				if (strlen($ano) == 2) {
+					if ($ano > 50) {
+						$ano += 1900;
+					} else {
+						$ano += 2000;
+					}
+				}
 				$data[$campo] = "$ano-$mes-$dia";
 			}
 		}
