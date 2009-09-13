@@ -68,6 +68,17 @@ class FormatacaoHelper extends AppHelper {
 			'escape' => true
 		);
 		$config = array_merge($padrao, $opcoes);
+		if ($valor > -1 && $valor < 1) {
+			$formatado = $this->Number->format(abs($valor), $config);
+			if ($valor < 0 ) {
+				if ($config['negative'] == '()') {
+					$formatado = '(' . $formatado .')';
+				} else {
+					$formatado = $config['negative'] . $formatado;
+				}
+			}
+			return $formatado;
+		}
 		return $this->Number->currency($valor, null, $config);
 	}
 
