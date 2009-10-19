@@ -10,7 +10,15 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
+App::import('Core', 'Model');
 App::import('Behavior', 'CakePtbr.Correios');
+
+class CakePtbr extends Model {
+	var $name = 'CakePtbr';
+	var $useTable = false;
+	var $actsAs = array('CakePtbr.Correios');
+}
+
 
 class CorreiosBehaviorTest extends CorreiosBehavior {
 
