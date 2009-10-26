@@ -15,9 +15,8 @@ class ValidacaoBehavior extends ModelBehavior {
 	function cpf($model, $data, $apenasNumeros, $extra = null) {
 		if ($extra) {
 			return $this->_cpf(current($data), $apenasNumeros);
-		} else {
-			return $this->_cpf(current($data));
 		}
+		return $this->_cpf(current($data));
 	}
 
 	function _cpf($data, $apenasNumeros = false) {
@@ -61,19 +60,15 @@ class ValidacaoBehavior extends ModelBehavior {
 	function cnpj($model, $data, $apenasNumeros, $extra = null) {
 		if ($extra) {
 			return $this->_cnpj(current($data), $apenasNumeros);
-		} else {
-			return $this->_cnpj(current($data));
 		}
+		return $this->_cnpj(current($data));
 	}
 
-	function cnpj_cpf($model, $data, $apenasNumeros, $extra = null) {
+	function cnpjOuCpf($model, $data, $apenasNumeros, $extra = null) {
 		if ($extra) {
-                        return $this->_cnpj(current($data), $apenasNumeros) || 
-                               $this->_cpf(current($data), $apenasNumeros);
-		} else {
-                        return $this->_cnpj(current($data)) ||
-                               $this->_cpf(current($data));
+			return $this->_cnpj(current($data), $apenasNumeros) || $this->_cpf(current($data), $apenasNumeros);
 		}
+		return $this->_cnpj(current($data)) || $this->_cpf(current($data));
 	}
 
 	function _cnpj($data, $apenasNumeros = false) {
@@ -115,9 +110,8 @@ class ValidacaoBehavior extends ModelBehavior {
 	function cep($model, $data, $separadores, $extra = null) {
 		if ($extra) {
 			return $this->_cep(current($data), $separadores);
-		} else {
-			return $this->_cep(current($data));
 		}
+		return $this->_cep(current($data));
 	}
 
 	function _cep($data, $separadores = array('', '-')) {
@@ -126,12 +120,12 @@ class ValidacaoBehavior extends ModelBehavior {
 		}
 		if (strlen($data) < 8) {
 			return false;
-		} else {
-			$numeros = preg_replace('/[^\d]/', '', $data);
-			if (strlen($numeros) < 8) {
-				return false;
-			}
 		}
+		$numeros = preg_replace('/[^\d]/', '', $data);
+		if (strlen($numeros) < 8) {
+			return false;
+		}
+
 		$primeiraParte = substr($numeros, 0, 5);
 		$segundaParte = substr($numeros, -3);
 		foreach ($separadores as $separador) {
@@ -146,9 +140,8 @@ class ValidacaoBehavior extends ModelBehavior {
 	function telefone($model, $data, $apenasNumeros, $extra = null) {
 		if ($extra) {
 			return $this->_telefone(current($data), $apenasNumeros);
-		} else {
-			return $this->_telefone(current($data));
 		}
+		return $this->_telefone(current($data));
 	}
 
 	function _telefone($data, $apenasNumeros = false) {
