@@ -12,7 +12,7 @@
 
 class ValidacaoBehavior extends ModelBehavior {
 
-	function cpf($model, $data, $apenasNumeros, $extra = null) {
+	function cpf(&$model, $data, $apenasNumeros, $extra = null) {
 		if ($extra) {
 			return $this->_cpf(current($data), $apenasNumeros);
 		}
@@ -57,14 +57,14 @@ class ValidacaoBehavior extends ModelBehavior {
 		return $dvCorreto == $dv;
 	}
 
-	function cnpj($model, $data, $apenasNumeros, $extra = null) {
+	function cnpj(&$model, $data, $apenasNumeros, $extra = null) {
 		if ($extra) {
 			return $this->_cnpj(current($data), $apenasNumeros);
 		}
 		return $this->_cnpj(current($data));
 	}
 
-	function cnpjOuCpf($model, $data, $apenasNumeros, $extra = null) {
+	function cnpjOuCpf(&$model, $data, $apenasNumeros, $extra = null) {
 		if ($extra) {
 			return $this->_cnpj(current($data), $apenasNumeros) || $this->_cpf(current($data), $apenasNumeros);
 		}
@@ -107,7 +107,7 @@ class ValidacaoBehavior extends ModelBehavior {
 		return true;
 	}
 
-	function cep($model, $data, $separadores, $extra = null) {
+	function cep(&$model, $data, $separadores, $extra = null) {
 		if ($extra) {
 			return $this->_cep(current($data), $separadores);
 		}
@@ -137,7 +137,7 @@ class ValidacaoBehavior extends ModelBehavior {
 		return false;
 	}
 
-	function telefone($model, $data, $apenasNumeros, $extra = null) {
+	function telefone(&$model, $data, $apenasNumeros, $extra = null) {
 		if ($extra) {
 			return $this->_telefone(current($data), $apenasNumeros);
 		}
