@@ -12,6 +12,21 @@
 
 App::import('Behavior', 'CakePtbr.Validacao');
 
+class TestValidacao extends CakeTestModel {
+
+	var $useTable = false;
+	var $name = 'TestValidacao';
+	var $actsAs = array('CakePtbr.Validacao');
+	var $_schema = array(
+		'id' => array('type' => 'integer', 'null' => '', 'default' => '', 'length' => '8'),
+		'cpf' => array('type' => 'string', 'null' => '', 'default' => '', 'length' => '15'),
+		'cnpj' => array('type' => 'string', 'null' => '', 'default' => '', 'length' => '20'),
+		'cnpj_cpf' => array('type' => 'string', 'null' => '', 'default' => '', 'length' => '20'),
+		'cep' => array('type' => 'string', 'null' => '', 'default' => '', 'length' => '10'),
+		'telefone' => array('type' => 'string', 'null' => '', 'default' => '', 'length' => '20')
+	);
+}
+
 class CakePtbrValidacaoCase extends CakeTestCase {
 
 	var $Validacao = null;
@@ -72,6 +87,30 @@ class CakePtbrValidacaoCase extends CakeTestCase {
 			$this->assertFalse($this->Validacao->_cpf($cpf, true));
 			$this->assertFalse($this->Validacao->_cpf($cpf, false));
 		}
+
+		$model =& new TestValidacao();
+
+		$model->validate = array('cpf' => array('rule' => 'cpf'));
+		$data = array('TestValidacao' => array('cpf' => '869.283.422-00'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('cpf' => '86928342200'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+		$data = array('TestValidacao' => array('cpf' => '869.283.422-11'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+
+		$model->validate = array('cpf' => array('rule' => array('cpf', true)));
+		$data = array('TestValidacao' => array('cpf' => '869.283.422-00'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+		$data = array('TestValidacao' => array('cpf' => '86928342200'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('cpf' => '86928342211'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
 	}
 
 	function testCNPJ() {
@@ -124,6 +163,55 @@ class CakePtbrValidacaoCase extends CakeTestCase {
 			$this->assertFalse($this->Validacao->_cnpj($cnpj, true));
 			$this->assertFalse($this->Validacao->_cnpj($cnpj, false));
 		}
+
+		$model =& new TestValidacao();
+
+		$model->validate = array('cnpj' => array('rule' => 'cnpj'));
+		$data = array('TestValidacao' => array('cnpj' => '70.373.767/0001-41'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('cnpj' => '70373767000141'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+		$data = array('TestValidacao' => array('cnpj' => '70.373.767/0001-55'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+
+		$model->validate = array('cnpj' => array('rule' => array('cnpj', true)));
+		$data = array('TestValidacao' => array('cnpj' => '70.373.767/0001-41'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+		$data = array('TestValidacao' => array('cnpj' => '70373767000141'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('cnpj' => '70373767000155'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+	}
+
+	function testCnpjCpf() {
+		$model =& new TestValidacao();
+
+		$model->validate = array('documento' => array('rule' => 'cnpjOuCpf'));
+		$data = array('TestValidacao' => array('documento' => '70.373.767/0001-41'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('documento' => '70373767000141'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+		$data = array('TestValidacao' => array('documento' => '70.373.767/0001-55'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+
+		$data = array('TestValidacao' => array('documento' => '869.283.422-00'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('documento' => '86928342200'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
+		$data = array('TestValidacao' => array('documento' => '869.283.422-11'));
+		$this->assertTrue($model->create($data));
+		$this->assertFalse($model->validates());
 	}
 
 	function testCEP() {
@@ -139,6 +227,23 @@ class CakePtbrValidacaoCase extends CakeTestCase {
 		$this->assertFalse($this->Validacao->_cep('81555-120', array('.')));
 		$this->assertFalse($this->Validacao->_cep('8155120'));
 		$this->assertFalse($this->Validacao->_cep('8155-120'));
+
+		$model =& new TestValidacao();
+
+		$model->validate = array('cep' => array('rule' => 'cep'));
+		$data = array('TestValidacao' => array('cep' => '01555-120'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('cep' => '01555120'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('cep' => '01555120'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$model->validate = array('cep' => array('rule' => array('cep', array('.'))));
+		$data = array('TestValidacao' => array('cep' => '01555.120'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
 	}
 
 	function testTelefone() {
@@ -158,6 +263,19 @@ class CakePtbrValidacaoCase extends CakeTestCase {
 		$this->assertFalse($this->Validacao->_telefone('55.5555-5555', false));
 		$this->assertFalse($this->Validacao->_telefone('55555555', false));
 		$this->assertFalse($this->Validacao->_telefone('55 (55) 5555-5555', false));
+
+		$model =& new TestValidacao();
+
+		$model->validate = array('telefone' => array('rule' => 'telefone'));
+		$data = array('TestValidacao' => array('telefone' => '5555-5555'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('telefone' => '(55)5555-5555'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
+		$data = array('TestValidacao' => array('telefone' => '+55(55)5555-5555'));
+		$this->assertTrue($model->create($data));
+		$this->assertTrue($model->validates());
 	}
 
 }
