@@ -66,6 +66,16 @@ class ValidacaoBehavior extends ModelBehavior {
 		}
 	}
 
+	function cnpj_cpf($model, $data, $apenasNumeros, $extra = null) {
+		if ($extra) {
+                        return $this->_cnpj(current($data), $apenasNumeros) || 
+                               $this->_cpf(current($data), $apenasNumeros);
+		} else {
+                        return $this->_cnpj(current($data)) ||
+                               $this->_cpf(current($data));
+		}
+	}
+
 	function _cnpj($data, $apenasNumeros = false) {
 		// Testar o formato da string
 		if ($apenasNumeros) {
