@@ -131,6 +131,20 @@ Deste modo ele irá validar apenas números.
 h5. CNPJ
 
 Mesmo funcionamento do CPF, porém para CNPJ. A regra de apenas números também é válida. O formato do CPNJ é considerado XX.XXX.XXX/XXXX-XX.
+O nome da regra (rule) é 'cnpj'.
+
+h5. CNPJ ou CPF
+
+Mesmo funcionamento do CNPJ ou CPF, mas este irá validar os dois tipo. Ele é apenas uma abreviação para a utilização dos dois campos.
+A forma de utilização é a seguinte:
+
+<pre>
+	var $validate = array(
+		'documento' => array(
+			'rule' => array('cnpjOuCpf', true); // Ou também 'rule' => 'cnpjOuCpf'
+		)
+	);
+</pre>
 
 h5. CEP
 
