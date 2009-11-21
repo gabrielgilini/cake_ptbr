@@ -3,6 +3,8 @@ h1. CakePHP em português
 Caso você tenha dúvidas, elogios, reclamações, sugestões, etc., acesse o
 "Grupo de discursão CakePHP-PT":http://groups.google.com/group/cakephp-pt e envie uma mensagem.
 
+Este plugin foi desenvolvido para a versão 1.2 do CakePHP.
+
 h2. Instruções gerais
 
 Copie todos os diretórios deste diretório para dentro da pasta app/plugins/cake_ptbr (crie a pasta se necessário).
