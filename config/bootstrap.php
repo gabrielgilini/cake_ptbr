@@ -18,14 +18,69 @@ $localePaths = Configure::read('localePaths');
 $localePaths[] = dirname(dirname(__FILE__)) . DS . 'locale';
 Configure::write('localePaths', $localePaths);
 
-// Alteração do inflection
-require dirname(__FILE__) . DS . 'inflections.php';
-$inflector = Inflector::getInstance();
-$inflector->__pluralRules = $pluralRules;
-$inflector->__uninflectedPlural = $uninflectedPlural;
-$inflector->__irregularPlural = $irregularPlural;
-$inflector->__singularRules = $singularRules;
-$inflector->__uninflectedSingular = $uninflectedPlural;
-$inflector->__irregularSingular = array_flip($irregularPlural);
+// Alteração do inflector
+$_uninflected = array('atlas', 'lapis', 'onibus', 'pires', 'virus', '.*x');
+$_pluralIrregular = array(
+	'abdomens' => 'abdomen',
+	'alemao' => 'alemaes',
+	'artesa' => 'artesaos',
+	'as' => 'ases',
+	'bencao' => 'bencaos',
+	'cao' => 'caes',
+	'capelao' => 'capelaes',
+	'capitao' => 'capitaes',
+	'chao' => 'chaos',
+	'charlatao' => 'charlataes',
+	'cidadao' => 'cidadaos',
+	'consul' => 'consules',
+	'cristao' => 'cristaos',
+	'dificil' => 'dificeis',
+	'escrivao' => 'escrivaes',
+	'fossel' => 'fosseis',
+	'germens' => 'germen',
+	'grao' => 'graos',
+	'hifens' => 'hifen',
+	'irmao' => 'irmaos',
+	'liquens' => 'liquen',
+	'mal' => 'males',
+	'mao' => 'maos',
+	'orfao' => 'orfaos',
+	'pais' => 'paises',
+	'pao' => 'paes',
+	'perfil' => 'perfis',
+	'projetil' => 'projeteis',
+	'reptil' => 'repteis',
+	'sacristao' => 'sacristaes',
+	'sotao' => 'sotaos',
+	'tabeliao' => 'tabeliaes'
+);
+
+Inflector::rules('singular', array(
+	'rules' => array(
+		'/^(.*)(oes|aes|aos)$/i' => '\1ao',
+		'/^(.*)(a|e|o|u)is$/i' => '\1\2l',
+		'/^(.*)e?is$/i' => '\1il',
+		'/^(.*)(r|s|z)es$/i' => '\1\2',
+		'/^(.*)ns$/i' => '\1m',
+		'/^(.*)s$/i' => '\1',
+	),
+	'uninflected' => $_uninflected,
+	'irregular' => array_flip($_pluralIrregular)
+));
+
+Inflector::rules('plural', array(
+	'rules' => array(
+		'/^(.*)ao$/i' => '\1oes',
+		'/^(.*)(r|s|z)$/i' => '\1\2es',
+		'/^(.*)(a|e|o|u)l$/i' => '\1\2is',
+		'/^(.*)il$/i' => '\1is',
+		'/^(.*)(m|n)$/i' => '\1ns',
+		'/^(.*)$/i' => '\1s'
+	),
+	'uninflected' => $_uninflected,
+	'irregular' => $_pluralIrregular
+));
+
+unset($_uninflected, $_pluralIrregular);
 
 ?>
