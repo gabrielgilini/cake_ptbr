@@ -14,9 +14,7 @@
 Configure::write('Config.language', 'pt-br');
 
 // Adicionando o caminho do locale
-$localePaths = Configure::read('localePaths');
-$localePaths[] = dirname(dirname(__FILE__)) . DS . 'locale';
-Configure::write('localePaths', $localePaths);
+App::build(array('locales' => dirname(dirname(__FILE__)) . DS . 'locale' . DS));
 
 // Alteração do inflector
 $_uninflected = array('atlas', 'lapis', 'onibus', 'pires', 'virus', '.*x');
