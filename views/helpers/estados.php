@@ -14,7 +14,7 @@ class EstadosHelper extends AppHelper {
 
 	var $helpers = array('Form');
 
-	function select($fieldName, $selected = null, $attributes = array(), $showEmpty = false) {
+	function select($fieldName, $selected = null, $attributes = array()) {
 		App::import('Vendor', 'CakePtbr.Estados');
 		$options = Estados::lista();
 		if (isset($attributes['uf']) && $attributes['uf'] === true) {
@@ -22,7 +22,10 @@ class EstadosHelper extends AppHelper {
 			$options = array_combine($estados, $estados);
 			unset($attributes['uf']);
 		}
-		return $this->Form->select($fieldName, $options, $selected, $attributes, $showEmpty);
+		if (!isset($attributes['empty'])) {
+			$attributes['empty'] = false;
+		}
+		return $this->Form->select($fieldName, $options, $selected, $attributes);
 	}
 }
 
