@@ -64,7 +64,7 @@ Inflector::rules('singular', array(
 	),
 	'uninflected' => $_uninflected,
 	'irregular' => array_flip($_pluralIrregular)
-));
+), true);
 
 Inflector::rules('plural', array(
 	'rules' => array(
@@ -77,7 +77,7 @@ Inflector::rules('plural', array(
 	),
 	'uninflected' => $_uninflected,
 	'irregular' => $_pluralIrregular
-));
+), true);
 
 unset($_uninflected, $_pluralIrregular);
 
