@@ -25,7 +25,6 @@ define('ERRO_CORREIOS_EXCESSO_PESO', -1001);
 define('ERRO_CORREIOS_FALHA_COMUNICACAO', -1002);
 define('ERRO_CORREIOS_CONTEUDO_INVALIDO', -1003);
 
-App::import('Behavior', 'CakePtbr.Validacao');
 App::import('Core', array('HttpSocket', 'Xml'));
 
 class CorreiosBehavior extends ModelBehavior {
@@ -36,8 +35,8 @@ class CorreiosBehavior extends ModelBehavior {
 		if (!in_array($servico, $tipos)) {
 			return ERRO_CORREIOS_PARAMETROS_INVALIDOS;
 		}
-		$Validacao = new ValidacaoBehavior();
-		if (!$Validacao->_cep($cepOrigem, '-') || !$Validacao->_cep($cepDestino, '-')) {
+		
+		if (!$this->_validaCep($cepOrigem) || !$this->_validaCep($cepDestino)) {
 			return ERRO_CORREIOS_PARAMETROS_INVALIDOS;
 		}
 		if (!is_numeric($peso) || !is_numeric($valorDeclarado)) {
@@ -105,8 +104,7 @@ class CorreiosBehavior extends ModelBehavior {
 	}
 
 	function endereco(&$model, $cep) {
-		$Validacao = new ValidacaoBehavior();
-		if (!$Validacao->_cep($cep, '-')) {
+		if (!$this->_validaCep($cep, '-')) {
 			return ERRO_CORREIOS_PARAMETROS_INVALIDOS;
 		}
 
@@ -161,6 +159,10 @@ class CorreiosBehavior extends ModelBehavior {
 		list($cidade, $uf) = explode('/', $matches[1]);
 
 		return compact('logradouro', 'bairro', 'cidade', 'uf');
+	}
+
+	function _validaCep($cep) {
+		return (bool)preg_match('/^\d{5}\-?\d{3}$/', $cep);
 	}
 
 }
