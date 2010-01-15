@@ -8,6 +8,9 @@ class CakePtbrNoticia extends Model {
 	var $name = 'Noticia';
 	var $useTable = false;
 
+	function exists() {
+		return true;
+	}
 }
 
 class CakePtbrNoticiaSemNada extends CakePtbrNoticia {
