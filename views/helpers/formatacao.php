@@ -14,11 +14,6 @@ class FormatacaoHelper extends AppHelper {
 
 	var $helpers = array('Time', 'Number');
 
-	function __construct() {
-		setlocale(LC_ALL, 'pt_BR.utf-8', 'pt_BR', 'pt-br', 'pt', 'pt_BR.iso-8859-1', 'portuguese');
-		parent::__construct();
-	}
-
 	/* Datas */
 
 	function data($data = null) {
@@ -35,8 +30,14 @@ class FormatacaoHelper extends AppHelper {
 	}
 
 	function dataCompleta($dataHora = null) {
+		$_diasDaSemana = array('Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado');
+		$_meses = array('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
+
 		$dataHora = $this->_ajustaDataHora($dataHora);
-		return $this->Time->format('l, d \d\e F \d\e Y, H:i:s', $dataHora);
+		$w = date('w', $dataHora);
+		$n = date('n', $dataHora) - 1;
+
+		return sprintf('%s, %02d de %s de %04d, %s', $_diasDaSemana[$w], date('d', $dataHora), $_meses[$n], date('Y', $dataHora), date('H:i:s', $dataHora));
 	}
 
 	function _ajustaDataHora($data) {

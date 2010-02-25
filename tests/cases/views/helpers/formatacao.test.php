@@ -38,8 +38,7 @@ class CakePtbrFormatacaoCase extends CakeTestCase {
 	}
 
 	function testDataCompleta() {
-		$this->assertEqual($this->Formatacao->dataCompleta(), date('l, d \d\e F \d\e Y, H:i:s'));
-		//$this->assertEqual($this->Formatacao->dataCompleta(strtotime('2009-04-21 10:20:30')), 'Terça-feira, 21 de abril de 2009, 10:20:30');
+		$this->assertEqual($this->Formatacao->dataCompleta(strtotime('2009-04-21 10:20:30')), 'Terça-feira, 21 de Abril de 2009, 10:20:30');
 	}
 
 	/* Números */
