@@ -15,7 +15,15 @@ class AjusteDataBehavior extends ModelBehavior {
 		}
 	}
 
+	function beforeValidate(&$model) {
+		return $this->ajustarDatas($model);
+	}
+
 	function beforeSave(&$model) {
+		return $this->ajustarDatas($model);
+	}
+
+	function ajustarDatas(&$model) {
 		$data =& $model->data[$model->name];
 		foreach ($this->campos[$model->name] as $campo) {
 			if (isset($data[$campo]) && preg_match('/\d{1,2}\/\d{1,2}\/\d{2,4}/', $data[$campo])) {
