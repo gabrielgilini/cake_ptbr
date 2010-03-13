@@ -79,6 +79,12 @@ Inflector::rules('plural', array(
 	'irregular' => $_pluralIrregular
 ), true);
 
+Inflector::rules('transliteration', array(
+	'/ã/' => 'a',
+	'/õ/' => 'o',
+	'/ü/' => 'u'
+));
+
 unset($_uninflected, $_pluralIrregular);
 
 ?>
