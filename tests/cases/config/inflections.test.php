@@ -69,6 +69,8 @@ class CakePtbrInflectionsCase extends CakeTestCase {
 		$this->assertEqual(Inflector::slug('João'), 'Joao');
 		$this->assertEqual(Inflector::slug('Conseqüência'), 'Consequencia');
 		$this->assertEqual(Inflector::slug('Linguiça não útil água'), 'Linguica_nao_util_agua');
+		$this->assertEqual(Inflector::slug('ÃÓ&'), 'AOE');
+		$this->assertEqual(Inflector::slug('äü au Sandoval'), 'au_au_Sandoval');
 	}
 
 }
