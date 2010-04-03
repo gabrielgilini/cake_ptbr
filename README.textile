@@ -286,3 +286,15 @@ echo $estados->select('Model.uf', null, array('uf' => true)); // Exibirá o sele
 Em todos os casos anteriores, o valor do campo será a sigla (2 caracteres). Vale lembrar que é possível
 utilizar todos os mesmos parâmetros do "select do form":http://book.cakephp.org/pt/view/728/select , exceto o campo @$options@, que foi
 suprimido. Além disso, o valor padrão de @$showEmpty@ agora é @false@ ao invés de @''@ (ou seja, não irá apresentar campo vazio).
+
+h3. Templates para o bake
+
+Gerar os models, controllers e views traduzidas no bake.
+
+h4. Instalação
+
+Não é necessário fazer nada. O bake identifica automaticamente o template.
+
+h4. Utilização
+
+Basta usar o bake normalmente.
