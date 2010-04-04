@@ -67,7 +67,7 @@ foreach ($fields as $field) {
 if (!empty($associations['hasOne'])) :
 	foreach ($associations['hasOne'] as $alias => $details): ?>
 	<div class="related">
-		<h3><?php echo "<?php printf(__('Relacionados ao %s', true), __('" . Inflector::humanize($details['controller']) . "', true));?>";?></h3>
+		<h3><?php echo "<?php printf(__('%s relacionados', true), __('" . Inflector::humanize($details['controller']) . "', true));?>";?></h3>
 	<?php echo "<?php if (!empty(\${$singularVar}['{$alias}'])):?>\n";?>
 		<dl><?php echo "\t<?php \$i = 0; \$class = ' class=\"altrow\"';?>\n";?>
 	<?php
@@ -100,7 +100,7 @@ foreach ($relations as $alias => $details):
 	$otherPluralHumanName = Inflector::humanize($details['controller']);
 	?>
 <div class="related">
-	<h3><?php echo "<?php printf(__('Relacionados a %s', true), __('{$otherPluralHumanName}', true));?>";?></h3>
+	<h3><?php echo "<?php printf(__('%s relacionados', true), __('{$otherPluralHumanName}', true));?>";?></h3>
 	<?php echo "<?php if (!empty(\${$singularVar}['{$alias}'])):?>\n";?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
