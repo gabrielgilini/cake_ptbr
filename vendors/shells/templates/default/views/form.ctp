@@ -16,11 +16,18 @@
  * @since         CakePHP(tm) v 1.2.0.5234
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+if ($action === 'add') {
+	$actionTitulo = 'Incluir';
+} elseif ($action === 'edit') {
+	$actionTitulo = 'Editar';
+} else {
+	$actionTitulo = Inflector::humanize($action);
+}
 ?>
 <div class="<?php echo $pluralVar;?> form">
 <?php echo "<?php echo \$this->Form->create('{$modelClass}');?>\n";?>
 	<fieldset>
- 		<legend><?php echo "<?php printf(__('" . Inflector::humanize($action) . " %s', true), __('{$singularHumanName}', true)); ?>";?></legend>
+ 		<legend><?php echo "<?php printf(__('" . $actionTitulo . " %s', true), __('{$singularHumanName}', true)); ?>";?></legend>
 <?php
 		echo "\t<?php\n";
 		foreach ($fields as $field) {
