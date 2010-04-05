@@ -23,11 +23,12 @@ if ($action === 'add') {
 } else {
 	$actionTitulo = Inflector::humanize($action);
 }
+require_once dirname(dirname(__FILE__)) . DS . 'inflexao.php';
 ?>
 <div class="<?php echo $pluralVar;?> form">
 <?php echo "<?php echo \$this->Form->create('{$modelClass}');?>\n";?>
 	<fieldset>
- 		<legend><?php echo "<?php printf(__('" . $actionTitulo . " %s', true), __('{$singularHumanName}', true)); ?>";?></legend>
+ 		<legend><?php echo "<?php printf(__('" . $actionTitulo . " %s', true), __('" . Inflexao::acentos($singularHumanName) . "', true)); ?>";?></legend>
 <?php
 		echo "\t<?php\n";
 		foreach ($fields as $field) {
@@ -56,14 +57,14 @@ if ($action === 'add') {
 <?php if (strpos($action, 'add') === false): ?>
 		<li><?php echo "<?php echo \$this->Html->link(__('Excluir', true), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), null, sprintf(__('Você tem certeza que deseja excluir o id #%s?', true), \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>";?></li>
 <?php endif;?>
-		<li><?php echo "<?php echo \$this->Html->link(sprintf(__('Listar %s', true), __('{$pluralHumanName}', true)), array('action' => 'index'));?>";?></li>
+		<li><?php echo "<?php echo \$this->Html->link(sprintf(__('Listar %s', true), __('" . Inflexao::acentos($pluralHumanName) . "', true)), array('action' => 'index'));?>";?></li>
 <?php
 		$done = array();
 		foreach ($associations as $type => $data) {
 			foreach ($data as $alias => $details) {
 				if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
-					echo "\t\t<li><?php echo \$this->Html->link(sprintf(__('Listar %s', true), __('" . Inflector::humanize($details['controller']) . "', true)), array('controller' => '{$details['controller']}', 'action' => 'index')); ?> </li>\n";
-					echo "\t\t<li><?php echo \$this->Html->link(sprintf(__('Novo %s', true), __('" . Inflector::humanize(Inflector::underscore($alias)) . "', true)), array('controller' => '{$details['controller']}', 'action' => 'add')); ?> </li>\n";
+					echo "\t\t<li><?php echo \$this->Html->link(sprintf(__('Listar %s', true), __('" . Inflexao::acentos(Inflector::humanize($details['controller'])) . "', true)), array('controller' => '{$details['controller']}', 'action' => 'index')); ?> </li>\n";
+					echo "\t\t<li><?php echo \$this->Html->link(sprintf(__('Novo %s', true), __('" . Inflexao::acentos(Inflector::humanize(Inflector::underscore($alias))) . "', true)), array('controller' => '{$details['controller']}', 'action' => 'add')); ?> </li>\n";
 					$done[] = $details['controller'];
 				}
 			}

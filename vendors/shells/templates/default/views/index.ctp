@@ -18,7 +18,7 @@
  */
 ?>
 <div class="<?php echo $pluralVar;?> index">
-	<h2><?php echo "<?php __('{$pluralHumanName}');?>";?></h2>
+	<h2><?php echo "<?php __('" . Inflexao::acentos($pluralHumanName) . "');?>";?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 	<?php  foreach ($fields as $field):?>
@@ -79,14 +79,14 @@
 <div class="actions">
 	<h3><?php echo "<?php __('Ações'); ?>"; ?></h3>
 	<ul>
-		<li><?php echo "<?php echo \$this->Html->link(sprintf(__('Novo %s', true), __('{$singularHumanName}', true)), array('action' => 'add')); ?>";?></li>
+		<li><?php echo "<?php echo \$this->Html->link(sprintf(__('Novo %s', true), __('" . Inflexao::acentos($singularHumanName) . "', true)), array('action' => 'add')); ?>";?></li>
 <?php
 	$done = array();
 	foreach ($associations as $type => $data) {
 		foreach ($data as $alias => $details) {
 			if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
-				echo "\t\t<li><?php echo \$this->Html->link(sprintf(__('Listar %s', true), __('" . Inflector::humanize($details['controller']) . "', true)), array('controller' => '{$details['controller']}', 'action' => 'index')); ?> </li>\n";
-				echo "\t\t<li><?php echo \$this->Html->link(sprintf(__('Novo %s', true), __('" . Inflector::humanize(Inflector::underscore($alias)) . "', true)), array('controller' => '{$details['controller']}', 'action' => 'add')); ?> </li>\n";
+				echo "\t\t<li><?php echo \$this->Html->link(sprintf(__('Listar %s', true), __('" . Inflexao::acentos(Inflector::humanize($details['controller'])) . "', true)), array('controller' => '{$details['controller']}', 'action' => 'index')); ?> </li>\n";
+				echo "\t\t<li><?php echo \$this->Html->link(sprintf(__('Novo %s', true), __('" . Inflexao::acentos(Inflector::humanize(Inflector::underscore($alias))) . "', true)), array('controller' => '{$details['controller']}', 'action' => 'add')); ?> </li>\n";
 				$done[] = $details['controller'];
 			}
 		}

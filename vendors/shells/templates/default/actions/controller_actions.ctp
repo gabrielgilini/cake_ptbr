@@ -17,6 +17,7 @@
  * @since         CakePHP(tm) v 1.3
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+require dirname(dirname(__FILE__)) . DS . 'inflexao.php';
 ?>
 
 	function <?php echo $admin ?>index() {
@@ -27,10 +28,10 @@
 	function <?php echo $admin ?>view($id = null) {
 		if (!$id) {
 <?php if ($wannaUseSession): ?>
-			$this->Session->setFlash(sprintf(__('%s inválido.', true), '<?php echo ucfirst(strtolower($singularHumanName)) ?>'));
+			$this->Session->setFlash(sprintf(__('%s inválido.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'));
 			$this->redirect(array('action' => 'index'));
 <?php else: ?>
-			$this->flash(sprintf(__('%s inválido.', true), '<?php echo ucfirst(strtolower($singularHumanName)); ?>'), array('action' => 'index'));
+			$this->flash(sprintf(__('%s inválido.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'), array('action' => 'index'));
 <?php endif; ?>
 		}
 		$this->set('<?php echo $singularName; ?>', $this-><?php echo $currentModelName; ?>->read(null, $id));
@@ -42,14 +43,14 @@
 			$this-><?php echo $currentModelName; ?>->create();
 			if ($this-><?php echo $currentModelName; ?>->save($this->data)) {
 <?php if ($wannaUseSession): ?>
-				$this->Session->setFlash(sprintf(__('O %s foi salvo.', true), '<?php echo strtolower($singularHumanName); ?>'));
+				$this->Session->setFlash(sprintf(__('O %s foi salvo.', true), '<?php echo Inflexao::acentos(strtolower($singularHumanName)); ?>'));
 				$this->redirect(array('action' => 'index'));
 <?php else: ?>
-				$this->flash(sprintf(__('%s salvo.', true), '<?php echo ucfirst(strtolower($currentModelName)); ?>'), array('action' => 'index'));
+				$this->flash(sprintf(__('%s salvo.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($currentModelName))); ?>'), array('action' => 'index'));
 <?php endif; ?>
 			} else {
 <?php if ($wannaUseSession): ?>
-				$this->Session->setFlash(sprintf(__('O %s não pode ser salvo. Por favor, tente novamente.', true), '<?php echo strtolower($singularHumanName); ?>'));
+				$this->Session->setFlash(sprintf(__('O %s não pode ser salvo. Por favor, tente novamente.', true), '<?php echo Inflexao::acentos(strtolower($singularHumanName)); ?>'));
 <?php endif; ?>
 			}
 		}
@@ -74,23 +75,23 @@
 	function <?php echo $admin; ?>edit($id = null) {
 		if (!$id && empty($this->data)) {
 <?php if ($wannaUseSession): ?>
-			$this->Session->setFlash(sprintf(__('%s inválido.', true), '<?php echo ucfirst(strtolower($singularHumanName)); ?>'));
+			$this->Session->setFlash(sprintf(__('%s inválido.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'));
 			$this->redirect(array('action' => 'index'));
 <?php else: ?>
-			$this->flash(sprintf(__('%s inválido.', true), '<?php echo ucfirst(strtolower($singularHumanName)); ?>'), array('action' => 'index'));
+			$this->flash(sprintf(__('%s inválido.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'), array('action' => 'index'));
 <?php endif; ?>
 		}
 		if (!empty($this->data)) {
 			if ($this-><?php echo $currentModelName; ?>->save($this->data)) {
 <?php if ($wannaUseSession): ?>
-				$this->Session->setFlash(sprintf(__('O %s foi salvo.', true), '<?php echo strtolower($singularHumanName); ?>'));
+				$this->Session->setFlash(sprintf(__('O %s foi salvo.', true), '<?php echo Inflexao::acentos(strtolower($singularHumanName)); ?>'));
 				$this->redirect(array('action' => 'index'));
 <?php else: ?>
-				$this->flash(sprintf(__('O %s foi salvo.', true), '<?php echo strtolower($singularHumanName); ?>'), array('action' => 'index'));
+				$this->flash(sprintf(__('O %s foi salvo.', true), '<?php echo Inflexao::acentos(strtolower($singularHumanName)); ?>'), array('action' => 'index'));
 <?php endif; ?>
 			} else {
 <?php if ($wannaUseSession): ?>
-				$this->Session->setFlash(sprintf(__('O %s não pode ser salvo. Por favor, tente novamente.', true), '<?php echo strtolower($singularHumanName); ?>'));
+				$this->Session->setFlash(sprintf(__('O %s não pode ser salvo. Por favor, tente novamente.', true), '<?php echo Inflexao::acentos(strtolower($singularHumanName)); ?>'));
 <?php endif; ?>
 			}
 		}
@@ -117,24 +118,24 @@
 	function <?php echo $admin; ?>delete($id = null) {
 		if (!$id) {
 <?php if ($wannaUseSession): ?>
-			$this->Session->setFlash(sprintf(__('ID inválido para %s.', true), '<?php echo strtolower($singularHumanName); ?>'));
+			$this->Session->setFlash(sprintf(__('ID inválido para %s.', true), '<?php echo Inflexao::acentos(strtolower($singularHumanName)); ?>'));
 			$this->redirect(array('action'=>'index'));
 <?php else: ?>
-			$this->flash(sprintf(__('%s inválido.', true), '<?php echo ucfirst(strtolower($singularHumanName)); ?>'), array('action' => 'index'));
+			$this->flash(sprintf(__('%s inválido.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'), array('action' => 'index'));
 <?php endif; ?>
 		}
 		if ($this-><?php echo $currentModelName; ?>->delete($id)) {
 <?php if ($wannaUseSession): ?>
-			$this->Session->setFlash(sprintf(__('%s excluído.', true), '<?php echo ucfirst(strtolower($singularHumanName)); ?>'));
+			$this->Session->setFlash(sprintf(__('%s excluído.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'));
 			$this->redirect(array('action'=>'index'));
 <?php else: ?>
-			$this->flash(sprintf(__('%s excluído.', true), '<?php echo ucfirst(strtolower($singularHumanName)); ?>'), array('action' => 'index'));
+			$this->flash(sprintf(__('%s excluído.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'), array('action' => 'index'));
 <?php endif; ?>
 		}
 <?php if ($wannaUseSession): ?>
-		$this->Session->setFlash(sprintf(__('%s não pode ser excluído.', true), '<?php echo ucfirst(strtolower($singularHumanName)); ?>'));
+		$this->Session->setFlash(sprintf(__('%s não pode ser excluído.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'));
 <?php else: ?>
-		$this->flash(sprintf(__('%s não pode ser excluído.', true), '<?php echo ucfirst(strtolower($singularHumanName)); ?>'), array('action' => 'index'));
+		$this->flash(sprintf(__('%s não pode ser excluído.', true), '<?php echo Inflexao::acentos(ucfirst(strtolower($singularHumanName))); ?>'), array('action' => 'index'));
 <?php endif; ?>
 		$this->redirect(array('action' => 'index'));
 	}
