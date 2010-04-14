@@ -29,6 +29,7 @@ class CakePtbrInflectionsCase extends CakeTestCase {
 		$this->assertEqual(Inflector::pluralize('Reptil'), 'Repteis');
 		$this->assertEqual(Inflector::pluralize('Sotao'), 'Sotaos');
 		$this->assertEqual(Inflector::pluralize('Pais'), 'Paises');
+		$this->assertEqual(Inflector::pluralize('Pai'), 'Pais');
 	}
 
 	function testSingular() {
@@ -48,6 +49,7 @@ class CakePtbrInflectionsCase extends CakeTestCase {
 		$this->assertEqual(Inflector::singularize('Repteis'), 'Reptil');
 		$this->assertEqual(Inflector::singularize('Sotaos'), 'Sotao');
 		$this->assertEqual(Inflector::singularize('Paises'), 'Pais');
+		$this->assertEqual(Inflector::singularize('Pais'), 'Pai');
 	}
 
 	function testNaoPluralizaveis() {
