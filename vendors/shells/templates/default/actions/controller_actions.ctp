@@ -17,7 +17,7 @@
  * @since         CakePHP(tm) v 1.3
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-require dirname(dirname(__FILE__)) . DS . 'inflexao.php';
+require_once dirname(dirname(__FILE__)) . DS . 'inflexao.php';
 ?>
 
 	function <?php echo $admin ?>index() {
