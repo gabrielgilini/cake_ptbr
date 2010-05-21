@@ -33,6 +33,7 @@ $_pluralIrregular = array(
 	'consul' => 'consules',
 	'cristao' => 'cristaos',
 	'dificil' => 'dificeis',
+	'email' => 'emails',
 	'escrivao' => 'escrivaes',
 	'fossel' => 'fosseis',
 	'germens' => 'germen',
