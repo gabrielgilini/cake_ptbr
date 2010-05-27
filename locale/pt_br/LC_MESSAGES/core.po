@@ -79,8 +79,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CakePHP 1.2.x.x\n"
 "POT-Creation-Date: 2010-02-11 20:20-0200\n"
-"PO-Revision-Date: 2010-02-15 20:54-0300\n"
-"Last-Translator: Juan Basso <jrbasso@gmail.com>\n"
+"PO-Revision-Date: 2010-05-27 13:47-0300\n"
+"Last-Translator: Juan Basso <juan.basso@digitro.com.br>\n"
 "Language-Team: CakePHP I18N & I10N Team <i10n.cakephp@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1574,9 +1574,8 @@ msgid "Deleting session key {%s}"
 msgstr "Excluindo chave da sessão {%s}"
 
 #: \libs\cake_session.php:258
-#, fuzzy
 msgid "%s doesn't exist"
-msgstr "Método %1$s::%2$s não existe"
+msgstr "%s não existe"
 
 #: \libs\cake_session.php:417
 msgid "Writing session key {%s}: %s"
@@ -3038,33 +3037,42 @@ msgstr[1] ""
 
 #~ msgid "To identify the node and parent, use the row id."
 #~ msgstr "Para identificar o nó e o pai, use a coluna id."
+
 #~ msgid "command not found"
 #~ msgstr "comando não encontrado"
+
 #~ msgid "What is the name of the table (enter \"null\" to use NO table)?"
 #~ msgstr ""
 #~ "Qual o nome da tabela (digite \"null\" para NÃO usar tabela alguma)?"
+
 #~ msgid "This is a self join. Use %s as the alias"
 #~ msgstr "Isto é um self join. Use %s como alias"
+
 #~ msgid ""
 #~ "The selection you entered was invalid. Please enter a number between 1 "
 #~ "and 4."
 #~ msgstr ""
 #~ "A seleção que você digitou é inválida. Por favor digite um número entre 1 "
 #~ "e 4."
+
 #~ msgid "Enter the class to test or (q)uit"
 #~ msgstr "Digite a classe para testar ou 'q' para sair"
+
 #~ msgid "Enter a test case or (q)uit"
 #~ msgstr "Digite um test case ou 'q' para sair"
+
 #~ msgid "Test baked\n"
 #~ msgstr "Test saindo do forno\n"
+
 #~ msgid "Is this correct?"
 #~ msgstr "Isto está correto?"
+
 #~ msgid "Unable to load DataSource file %s.php"
 #~ msgstr "Impossível carregar arquivo DataSource %s.php"
+
 #~ msgid ""
 #~ "(TextHelper::flay) Deprecated: the Flay library is no longer supported "
 #~ "and will be removed in a future version."
 #~ msgstr ""
 #~ "(TextHelper::flay) Descontinuado: a biblioteca Flay não é mais suportada "
 #~ "e será removida em uma versão futura."
-
