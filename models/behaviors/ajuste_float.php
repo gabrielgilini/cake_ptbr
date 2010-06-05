@@ -5,6 +5,7 @@ class AjusteFloatBehavior extends ModelBehavior {
 	var $floatFields = array();
 
 	function setup(&$model, $config = array()) {
+		$this->floatFields[$model->alias] = array();
 		foreach ($model->_schema as $field => $spec) {
 			if ($spec['type'] == 'float') {
 				$this->floatFields[$model->alias][] = $field;
