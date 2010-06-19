@@ -16,9 +16,15 @@ class FormatacaoHelper extends AppHelper {
 
 	/* Datas */
 
-	function data($data = null) {
+	function data($data = null, $opcoes = array()) {
+		$padrao = array(
+			'invalid' => '31/12/1969',
+			'userOffset' => null
+		);
+		$config = array_merge($padrao, $opcoes);
+    
 		$data = $this->_ajustaDataHora($data);
-		return $this->Time->format('d/m/Y', $data);
+		return $this->Time->format('d/m/Y', $data, $config['invalid'], $config['userOffset']);
 	}
 
 	function dataHora($dataHora = null, $segundos = true) {
