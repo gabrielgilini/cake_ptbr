@@ -1,9 +1,25 @@
 <?php
+/**
+ * Teste do ajuste de inflexão
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 require dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__))))))) . DS . 'vendors' . DS . 'shells' . DS . 'templates' . DS . 'default' . DS . 'inflexao.php';
 
 class InflexaoTest extends CakeTestCase {
 
+/**
+ * testAcentos
+ *
+ * @retun void
+ * @access public
+ */
 	function testAcentos() {
 		$this->assertEqual('caminhão', Inflexao::acentos('caminhao'));
 		$this->assertEqual('Pão', Inflexao::acentos('Pao'));

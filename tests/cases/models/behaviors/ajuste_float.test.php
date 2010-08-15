@@ -1,22 +1,71 @@
 <?php
+/**
+ * Teste do Behavior AjusteFloat
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 App::import('Core', 'Model');
 App::import('Behavior', 'CakePtbr.AjusteFloat');
 
 class Produto extends CakeTestModel {
+
+/**
+ * Nome da model
+ *
+ * @var string
+ * @access public
+ */
 	var $name = 'Produto';
+
+/**
+ * Lista de Behaviors
+ *
+ * @var array
+ * @access public
+ */
 	var $actsAs = array('CakePtbr.AjusteFloat');
 }
 
 class CakePtbrAjusteFloat extends CakeTestCase {
 
+/**
+ * Fixtures
+ *
+ * @var array
+ * @access public
+ */
 	var $fixtures = array('plugin.cake_ptbr.produto');
+
+/**
+ * Produto
+ *
+ * @var object
+ * @access public
+ */
 	var $Produto = null;
 
+/**
+ * startTest
+ *
+ * @retun void
+ * @access public
+ */
 	function startTest() {
 		$this->Produto =& ClassRegistry::init('Produto');
 	}
 
+/**
+ * testFind
+ *
+ * @retun void
+ * @access public
+ */
 	function testFind() {
 		$result = $this->Produto->find('all');
 		$expected = array(
@@ -45,6 +94,12 @@ class CakePtbrAjusteFloat extends CakeTestCase {
 		$this->assertEqual($result, $expected);
 	}
 
+/**
+ * testSave
+ *
+ * @retun void
+ * @access public
+ */
 	function testSave() {
 		$data = array(
 			'Produto' => array(

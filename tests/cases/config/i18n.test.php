@@ -12,11 +12,23 @@
 
 class CakePtbrI18nCase extends CakeTestCase {
 
+/**
+ * testCore
+ *
+ * @retun void
+ * @access public
+ */
 	function testCore() {
 		$this->assertEqual(__('Missing Component File', true), 'Arquivo de Component não encontrado');
 		$this->assertEqual(__d('default', 'Missing Database', true), 'Database não encontrado');
 	}
 
+/**
+ * testTimeDefinition
+ *
+ * @retun void
+ * @access public
+ */
 	function testTimeDefinition() {
 		$result = __c('abday', 5, true);
 		$expected = array('Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab');

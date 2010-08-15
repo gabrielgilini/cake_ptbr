@@ -14,15 +14,48 @@ App::import('Helper', array('CakePtbr.Estados', 'Form', 'Html'));
 App::import('Vendor', 'CakePtbr.Estados');
 
 class ControllerTestController extends Controller {
+
+/**
+ * Nome do controller
+ *
+ * @var string
+ * @access public
+ */
 	var $name = 'ControllerTest';
+
+/**
+ * Uses
+ *
+ * @var array
+ * @access public
+ */
 	var $uses = null;
 }
 
 class CakePtbrEstadosCase extends CakeTestCase {
 
+/**
+ * Estados
+ *
+ * @var object
+ * @access public
+ */
 	var $Estados = null;
+
+/**
+ * Lista dos estados
+ *
+ * @var string
+ * @access public
+ */
 	var $listaEstados;
 
+/**
+ * setUp
+ *
+ * @retun void
+ * @access public
+ */
 	function setUp() {
 		parent::setUp();
 		$this->Estados =& new EstadosHelper();
@@ -34,6 +67,12 @@ class CakePtbrEstadosCase extends CakeTestCase {
 		$this->listaEstados = Estados::lista();
 	}
 
+/**
+ * testSelect
+ *
+ * @retun void
+ * @access public
+ */
 	function testSelect() {
 		$expected = array('select' => array('name' => 'data[Model][uf]', 'id' => 'ModelUf'));
 		foreach ($this->listaEstados as $sigla => $nome) {

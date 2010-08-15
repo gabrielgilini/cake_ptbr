@@ -13,17 +13,42 @@
 App::import('Model', 'CakePtbr.EstadoBrasileiro');
 
 class EstadoBrasileiroTestCase extends CakeTestCase {
+
+/**
+ * EstadoBrasileiro
+ *
+ * @var object
+ * @access public
+ */
 	var $EstadoBrasileiro = null;
 
+/**
+ * start
+ *
+ * @retun void
+ * @access public
+ */
 	function start() {
 		parent::start();
 		$this->EstadoBrasileiro = new EstadoBrasileiro();
 	}
 
+/**
+ * testInstance
+ *
+ * @retun void
+ * @access public
+ */
 	function testInstance() {
 		$this->assertTrue(is_a($this->EstadoBrasileiro, 'EstadoBrasileiro'));
 	}
 
+/**
+ * testFind
+ *
+ * @retun void
+ * @access public
+ */
 	function testFind() {
 		$results = $this->EstadoBrasileiro->find('list');
 		$this->assertEqual(count($results), 27);
@@ -36,6 +61,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertFalse($results);
 	}
 
+/**
+ * testListaEstados
+ *
+ * @retun void
+ * @access public
+ */
 	function testListaEstados() {
 		$results = $this->EstadoBrasileiro->listaEstados();
 		$this->assertEqual(count($results), 27);
@@ -47,6 +78,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertFalse(isset($results['DF']));
 	}
 
+/**
+ * testTodosEstados
+ *
+ * @retun void
+ * @access public
+ */
 	function testTodosEstados() {
 		$results = $this->EstadoBrasileiro->todosEstados();
 		$this->assertTrue(is_array($results['EstadoBrasileiro']));
@@ -58,6 +95,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertEqual(count($results['EstadoBrasileiro']), 26);
 	}
 
+/**
+ * testEstadoPorSigla
+ *
+ * @retun void
+ * @access public
+ */
 	function testEstadoPorSigla() {
 		$results = $this->EstadoBrasileiro->estadoPorSigla('SC');
 		$this->assertEqual($results, 'Santa Catarina');
@@ -67,6 +110,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertNotEqual($results, 'Sao Paulo');
 	}
 
+/**
+ * testSiglaPorEstado
+ *
+ * @retun void
+ * @access public
+ */
 	function testSiglaPorEstado() {
 		$results = $this->EstadoBrasileiro->siglaPorEstado('Santa Catarina');
 		$this->assertEqual($results, 'SC');
@@ -78,6 +127,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertFalse($results);
 	}
 
+/**
+ * testEstadosDoSul
+ *
+ * @retun void
+ * @access public
+ */
 	function testEstadosDoSul() {
 		$results = $this->EstadoBrasileiro->estadosDoSul();
 		$expected = array(
@@ -88,6 +143,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertEqual($results, $expected);
 	}
 
+/**
+ * testEstadosDoSudeste
+ *
+ * @retun void
+ * @access public
+ */
 	function testEstadosDoSudeste() {
 		$results = $this->EstadoBrasileiro->estadosDoSudeste();
 		$expected = array(
@@ -99,6 +160,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertEqual($results, $expected);
 	}
 
+/**
+ * testEstadosDoCentroOeste
+ *
+ * @retun void
+ * @access public
+ */
 	function testEstadosDoCentroOeste() {
 		$results = $this->EstadoBrasileiro->estadosDoCentroOeste();
 		$expected = array(
@@ -114,6 +181,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertEqual($results, $expected);
 	}
 
+/**
+ * testEstadosDoNorte
+ *
+ * @retun void
+ * @access public
+ */
 	function testEstadosDoNorte() {
 		$results = $this->EstadoBrasileiro->estadosDoNorte();
 		$expected = array(
@@ -128,6 +201,12 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 		$this->assertEqual($results, $expected);
 	}
 
+/**
+ * testEstadosDoNordeste
+ *
+ * @retun void
+ * @access public
+ */
 	function testEstadosDoNordeste() {
 		$results = $this->EstadoBrasileiro->estadosDoNordeste();
 		$expected = array(

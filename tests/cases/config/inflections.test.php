@@ -12,6 +12,12 @@
 
 class CakePtbrInflectionsCase extends CakeTestCase {
 
+/**
+ * testPlural
+ *
+ * @retun void
+ * @access public
+ */
 	function testPlural() {
 		$this->assertEqual(Inflector::pluralize('Compra'), 'Compras');
 		$this->assertEqual(Inflector::pluralize('Caminhao'), 'Caminhoes');
@@ -32,6 +38,12 @@ class CakePtbrInflectionsCase extends CakeTestCase {
 		$this->assertEqual(Inflector::pluralize('Pai'), 'Pais');
 	}
 
+/**
+ * testSingular
+ *
+ * @retun void
+ * @access public
+ */
 	function testSingular() {
 		$this->assertEqual(Inflector::singularize('Compras'), 'Compra');
 		$this->assertEqual(Inflector::singularize('Caminhoes'), 'Caminhao');
@@ -52,6 +64,12 @@ class CakePtbrInflectionsCase extends CakeTestCase {
 		$this->assertEqual(Inflector::singularize('Pais'), 'Pai');
 	}
 
+/**
+ * testNaoPluralizaveis
+ *
+ * @retun void
+ * @access public
+ */
 	function testNaoPluralizaveis() {
 		// singularize
 		$this->assertEqual(Inflector::singularize('Atlas'), 'Atlas');
@@ -69,6 +87,12 @@ class CakePtbrInflectionsCase extends CakeTestCase {
 		$this->assertEqual(Inflector::pluralize('Torax'), 'Torax');
 	}
 
+/**
+ * testSlug
+ *
+ * @retun void
+ * @access public
+ */
 	function testSlug() {
 		$this->assertEqual(Inflector::slug('João'), 'Joao');
 		$this->assertEqual(Inflector::slug('Conseqüência'), 'Consequencia');
