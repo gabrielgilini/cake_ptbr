@@ -1,9 +1,32 @@
 <?php
+/**
+ * Behavior para ajustar o formato de data
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 class AjusteDataBehavior extends ModelBehavior {
 
+/**
+ * Configuração dos campos
+ *
+ * @var array
+ * @access public
+ */
 	var $campos;
 
+/**
+ * Setup
+ *
+ * @param $model
+ * @param $config
+ * @return void
+ */
 	function setup(&$model, $config = array()) {
 		if (empty($config)) {
 			// Caso não seja informado os campos, ele irá buscar no schema
@@ -15,14 +38,35 @@ class AjusteDataBehavior extends ModelBehavior {
 		}
 	}
 
+/**
+ * Before Validate
+ *
+ * @param @model
+ * @return boolean
+ * @access public
+ */
 	function beforeValidate(&$model) {
 		return $this->ajustarDatas($model);
 	}
 
+/**
+ * Before Save
+ *
+ * @param @model
+ * @return boolean
+ * @access public
+ */
 	function beforeSave(&$model) {
 		return $this->ajustarDatas($model);
 	}
 
+/**
+ * Corrigir as datas
+ *
+ * @param @model
+ * @return boolean
+ * @access public
+ */
 	function ajustarDatas(&$model) {
 		$data =& $model->data[$model->name];
 		foreach ($this->campos[$model->name] as $campo) {
@@ -41,6 +85,13 @@ class AjusteDataBehavior extends ModelBehavior {
 		return true;
 	}
 
+/**
+ * Buscar campos de data nos dados da model
+ *
+ * @param @model
+ * @return array Lista dos campos
+ * @access protected
+ */
 	function _buscaCamposDate(&$model) {
 		if (!is_array($model->_schema)) {
 			return array();
