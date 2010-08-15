@@ -81,13 +81,13 @@ class CakePtbrFormatacaoCase extends CakeTestCase {
  * @access public
  */
 	function testPrecisao() {
-		$this->assertEqual($this->Formatacao->precisao(-10), '-10,000');
-		$this->assertEqual($this->Formatacao->precisao(0), '0,000');
-		$this->assertEqual($this->Formatacao->precisao(10), '10,000');
-		$this->assertEqual($this->Formatacao->precisao(10.323), '10,323');
-		$this->assertEqual($this->Formatacao->precisao(10.56486), '10,565');
-		$this->assertEqual($this->Formatacao->precisao(10.56486, 2), '10,56');
-		$this->assertEqual($this->Formatacao->precisao(10.56486, 0), '11');
+		$this->assertIdentical($this->Formatacao->precisao(-10), '-10,000');
+		$this->assertIdentical($this->Formatacao->precisao(0), '0,000');
+		$this->assertIdentical($this->Formatacao->precisao(10), '10,000');
+		$this->assertIdentical($this->Formatacao->precisao(10.323), '10,323');
+		$this->assertIdentical($this->Formatacao->precisao(10.56486), '10,565');
+		$this->assertIdentical($this->Formatacao->precisao(10.56486, 2), '10,56');
+		$this->assertIdentical($this->Formatacao->precisao(10.56486, 0), '11');
 	}
 
 /**
