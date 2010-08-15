@@ -12,6 +12,12 @@
 
 class Estados {
 
+/**
+ * Lista dos estados brasileiros
+ *
+ * @return array Lista dos estados
+ * @access public
+ */
 	function lista() {
 		return array(
 			'AC' => 'Acre',
