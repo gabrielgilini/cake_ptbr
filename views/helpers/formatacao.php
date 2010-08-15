@@ -103,7 +103,7 @@ class FormatacaoHelper extends AppHelper {
  * @access public
  */
 	function precisao($numero, $casasDecimais = 3) {
-		return sprintf("%01.{$casasDecimais}f", $numero);
+		return number_format($numero, $casasDecimais, ',', '.');
 	}
 
 /**
