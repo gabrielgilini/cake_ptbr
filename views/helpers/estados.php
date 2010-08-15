@@ -12,8 +12,22 @@
 
 class EstadosHelper extends AppHelper {
 
+/**
+ * Helpers auxiliares
+ *
+ * @var array
+ * @access public
+ */
 	var $helpers = array('Form');
 
+/**
+ * Retorna a select com a lista dos estados
+ *
+ * @param string $fieldName Nome do campo
+ * @param string $selected Sigla do estado que deve ser selecionado
+ * @param array $attributes Mesmos atributos do Form::select(). Também é possível passar o param
+				'uf' para mostrar apenas as siglas, sem os nomes
+ */
 	function select($fieldName, $selected = null, $attributes = array()) {
 		App::import('Vendor', 'CakePtbr.Estados');
 		$options = Estados::lista();
