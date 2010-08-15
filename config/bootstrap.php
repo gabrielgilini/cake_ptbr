@@ -10,11 +10,8 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
-// Definindo idioma da aplicação
-Configure::write('Config.language', 'pt-br');
-
-// Adicionando o caminho do locale
-App::build(array('locales' => dirname(dirname(__FILE__)) . DS . 'locale' . DS));
+// Tradução das mensagens do core
+include dirname(__FILE__) . DS . 'traducao_core.php';
 
 // Alteração do inflector
 $_uninflected = array('atlas', 'lapis', 'onibus', 'pires', 'virus', '.*x');
