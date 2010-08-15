@@ -10,6 +10,8 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
+include dirname(dirname(dirname(dirname(__FILE__)))) . DS . 'config' . DS . 'inflections.php';
+
 class CakePtbrInflectionsCase extends CakeTestCase {
 
 /**
