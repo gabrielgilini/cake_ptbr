@@ -1,9 +1,33 @@
 <?php
+/**
+ * Behavior para ajustar os campos float
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 class AjusteFloatBehavior extends ModelBehavior {
 
+/**
+ * Campos do tipo float
+ *
+ * @var array
+ * @access public
+ */
 	var $floatFields = array();
 
+/**
+ * Setup
+ *
+ * @param object $model
+ * @param array $config
+ * @return void
+ * @access public
+ */
 	function setup(&$model, $config = array()) {
 		$this->floatFields[$model->alias] = array();
 		foreach ($model->_schema as $field => $spec) {
@@ -13,6 +37,13 @@ class AjusteFloatBehavior extends ModelBehavior {
 		}
 	}
 
+/**
+ * Before Validate
+ *
+ * @param object $model
+ * @return void
+ * @access public
+ */
 	function beforeSave(&$model) {
 		$data =& $model->data[$model->alias];
 		foreach ($data as $name => $value) {
@@ -24,6 +55,15 @@ class AjusteFloatBehavior extends ModelBehavior {
 		return true;
 	}
 
+/**
+ * After Find
+ *
+ * @param object $model
+ * @param array $results
+ * @param boolean $primary
+ * @return void
+ * @access public
+ */
 	function afterFind(&$model, $results, $primary) {
 		foreach ($results as $key => $r) {
 			if (isset($r[$model->alias]) && is_array($r[$model->alias])) {
