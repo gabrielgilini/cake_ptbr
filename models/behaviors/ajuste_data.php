@@ -23,9 +23,10 @@ class AjusteDataBehavior extends ModelBehavior {
 /**
  * Setup
  *
- * @param $model
- * @param $config
+ * @param object $model
+ * @param array $config
  * @return void
+ * @access public
  */
 	function setup(&$model, $config = array()) {
 		if (empty($config)) {
@@ -41,7 +42,7 @@ class AjusteDataBehavior extends ModelBehavior {
 /**
  * Before Validate
  *
- * @param @model
+ * @param object $model
  * @return boolean
  * @access public
  */
@@ -52,7 +53,7 @@ class AjusteDataBehavior extends ModelBehavior {
 /**
  * Before Save
  *
- * @param @model
+ * @param object $model
  * @return boolean
  * @access public
  */
@@ -63,7 +64,7 @@ class AjusteDataBehavior extends ModelBehavior {
 /**
  * Corrigir as datas
  *
- * @param @model
+ * @param object $model
  * @return boolean
  * @access public
  */
@@ -88,7 +89,7 @@ class AjusteDataBehavior extends ModelBehavior {
 /**
  * Buscar campos de data nos dados da model
  *
- * @param @model
+ * @param object $model
  * @return array Lista dos campos
  * @access protected
  */
