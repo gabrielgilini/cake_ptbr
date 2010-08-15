@@ -29,6 +29,20 @@ App::import('Core', array('HttpSocket', 'Xml'));
 
 class CorreiosBehavior extends ModelBehavior {
 
+/**
+ * Cálculo do valor do frete
+ *
+ * @param object $model
+ * @param integer $servico Código do serviço, ver as defines CORREIOS_*
+ * @param string $cepOrigem CEP de origem no formato XXXXX-XXX
+ * @param string $cepDestino CEP de destino no formato XXXXX-XXX
+ * @param float $peso Peso do pacote, em quilos
+ * @param boolean $maoPropria Usar recurso de mão própria?
+ * @param float $valorDeclarado Valor declarado do pacote
+ * @param boolean $avisoRecebimento Aviso de recebimento?
+ * @return mixed Array com os dados do frete ou integer com erro. Ver defines ERRO_CORREIOS_* para erros.
+ * @access public
+ */
 	function valorFrete(&$model, $servico, $cepOrigem, $cepDestino, $peso, $maoPropria = false, $valorDeclarado = 0.0, $avisoRecebimento = false) {
 		// Validação dos parâmetros
 		$tipos = array(CORREIOS_SEDEX, CORREIOS_SEDEX_A_COBRAR, CORREIOS_SEDEX_10, CORREIOS_SEDEX_HOJE, CORREIOS_ENCOMENDA_NORMAL);
@@ -103,6 +117,14 @@ class CorreiosBehavior extends ModelBehavior {
 		);
 	}
 
+/**
+ * Pegar o endereço de um CEP específico
+ *
+ * @param object $model
+ * @param string $cep CEP no format XXXXX-XXX
+ * @return mixed Array com os dados do endereço ou interger para erro. Ver defines ERRO_CORREIOS_* para os erros.
+ * @access public
+ */
 	function endereco(&$model, $cep) {
 		if (!$this->_validaCep($cep, '-')) {
 			return ERRO_CORREIOS_PARAMETROS_INVALIDOS;
@@ -161,6 +183,13 @@ class CorreiosBehavior extends ModelBehavior {
 		return compact('logradouro', 'bairro', 'cidade', 'uf');
 	}
 
+/**
+ * Verificar se o CEP digitado está correto
+ *
+ * @param string $cep CEP
+ * @return boolean CEP Correto
+ * @access protected
+ */
 	function _validaCep($cep) {
 		return (bool)preg_match('/^\d{5}\-?\d{3}$/', $cep);
 	}
