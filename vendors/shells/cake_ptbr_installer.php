@@ -12,6 +12,12 @@
 
 if (App::import('Vendor', 'PluginManager.Installer')) {
 	class CakePtbrInstaller extends InstallerPM {
+/**
+ * Instala a aplicação
+ *
+ * @return void
+ * @access public
+ */
 		function install() {
 			App::import('Core', 'File');
 			$bootstrap = new File(CONFIGS . 'bootstrap.php');
@@ -28,6 +34,13 @@ if (App::import('Vendor', 'PluginManager.Installer')) {
 }
 
 class CakePtbrInstallerShell extends Shell {
+
+/**
+ * Main
+ *
+ * @return void
+ * @access public
+ */
 	function main() {
 		$this->out('Este arquivo eh reservado para instalacao atraves do PluginManager.');
 		$this->out('Mais informacoes sobre o PluginManager: http://kiss.souagil.com.br/2009/04/plugin-manager/');
