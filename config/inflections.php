@@ -1,6 +1,6 @@
 <?php
 /**
- * Ajustes das inflections para português
+ * Ajustes das inflections para portuguÃªs
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
@@ -10,7 +10,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
-// Alteração do inflector
+// AlteraÃ§Ã£o do inflector
 $_uninflected = array('atlas', 'lapis', 'onibus', 'pires', 'virus', '.*x');
 $_pluralIrregular = array(
 	'abdomens' => 'abdomen',
@@ -76,52 +76,34 @@ Inflector::rules('plural', array(
 ), true);
 
 Inflector::rules('transliteration', array(
-	'/À|Á|Â|Ã|Ä|Å|?|A|A|A|A/' => 'A',
-	'/È|É|Ê|Ë|E|E|E|E|E/' => 'E',
-	'/Ì|Í|Î|Ï|I|I|I|I|I|I/' => 'I',
-	'/Ò|Ó|Ô|Õ|Ö|O|O|O|O|O|Ø|?/' => 'O',
-	'/Ù|Ú|Û|Ü|U|U|U|U|U|U|U|U|U|U|U|U/' => 'U',
-	'/Ç|C|C|C|C/' => 'C',
-	'/Ð|D|Ð/' => 'D',
-	'/G|G|G|G/' => 'G',
-	'/H|H/' => 'H',
-	'/J/' => 'J',
-	'/K/' => 'K',
-	'/L|L|L|?|L/' => 'L',
-	'/Ñ|N|N|N/' => 'N',
-	'/R|R|R/' => 'R',
-	'/S|S|S|Š/' => 'S',
-	'/T|T|T/' => 'T',
-	'/Ý|Ÿ|Y/' => 'Y',
-	'/Z|Z|Ž/' => 'Z',
-	'/W/' => 'W',
-	'/Æ|?/' => 'AE',
-	'/ß/'=> 'ss',
-	'/?/' => 'IJ',
-	'/Œ/' => 'OE',
-	'/à|á|â|ã|ä|å|?|a|a|a|a|ª/' => 'a',
-	'/è|é|ê|ë|e|e|e|e|e|&/' => 'e',
-	'/ì|í|î|ï|i|i|i|i|i|i/' => 'i',
-	'/ò|ó|ô|õ|ö|o|o|o|o|o|ø|?|º/' => 'o',
-	'/ù|ú|û|ü|u|u|u|u|u|u|u|u|u|u|u|u/' => 'u',
-	'/ç|c|c|c|c/' => 'c',
-	'/ð|d|d/' => 'd',
-	'/g|g|g|g/' => 'g',
-	'/h|h/' => 'h',
-	'/j/' => 'j',
-	'/k/' => 'k',
-	'/l|l|l|?|l/' => 'l',
-	'/ñ|n|n|n|?/' => 'n',
-	'/r|r|r/' => 'r',
-	'/s|s|s|š|?/' => 's',
-	'/t|t|t/' => 't',
-	'/ý|ÿ|y/' => 'y',
-	'/w/' => 'w',
-	'/z|z|ž/' => 'z',
-	'/æ|?/' => 'ae',
-	'/?/' => 'ij',
-	'/œ/' => 'oe',
-	'/ƒ/' => 'f'
+	'/Ã€|Ã|Ã‚|Ãƒ|Ã„|Ã…/' => 'A',
+	'/Ãˆ|Ã‰|ÃŠ|Ã‹/' => 'E',
+	'/ÃŒ|Ã|ÃŽ|Ã/' => 'I',
+	'/Ã’|Ã“|Ã”|Ã•|Ã–|Ã˜/' => 'O',
+	'/Ã™|Ãš|Ã›|Ãœ/' => 'U',
+	'/Ã‡/' => 'C',
+	'/Ã/' => 'D',
+	'/Ã‘/' => 'N',
+	'/Å /' => 'S',
+	'/Ã|Å¸/' => 'Y',
+	'/Å½/' => 'Z',
+	'/Ã†/' => 'AE',
+	'/ÃŸ/'=> 'ss',
+	'/Å’/' => 'OE',
+	'/Ã |Ã¡|Ã¢|Ã£|Ã¤|Ã¥|Âª/' => 'a',
+	'/Ã¨|Ã©|Ãª|Ã«|&/' => 'e',
+	'/Ã¬|Ã­|Ã®|Ã¯/' => 'i',
+	'/Ã²|Ã³|Ã´|Ãµ|Ã¶|Ã¸|Âº/' => 'o',
+	'/Ã¹|Ãº|Ã»|Ã¼/' => 'u',
+	'/Ã§/' => 'c',
+	'/Ã°/' => 'd',
+	'/Ã±/' => 'n',
+	'/Å¡/' => 's',
+	'/Ã½|Ã¿/' => 'y',
+	'/Å¾/' => 'z',
+	'/Ã¦/' => 'ae',
+	'/Å“/' => 'oe',
+	'/Æ’/' => 'f'
 ));
 
 unset($_uninflected, $_pluralIrregular);
