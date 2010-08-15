@@ -1,7 +1,24 @@
 <?php
+/**
+ * Classe auxiliar para ajustar as palavras na geração dos templates
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @author        Juan Basso <jrbasso@gmail.com>
+ * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
 
 class Inflexao {
 
+/**
+ * Ajusta as palavras para por acentos
+ *
+ * @param string $palavra Palavra a ser modificada
+ * @return string Palavra com acento
+ * @access public
+ */
 	function acentos($palavra) {
 		$espacamentos = array(' ', '_');
 		foreach ($espacamentos as $espacamento) {
