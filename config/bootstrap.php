@@ -15,5 +15,3 @@ include dirname(__FILE__) . DS . 'traducao_core.php';
 
 // Alteração das regras de inflections
 include dirname(__FILE__) . DS . 'inflections.php';
-
-?>

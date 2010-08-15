@@ -103,5 +103,3 @@ class EstadoBrasileiro extends AppModel {
 	}
 
 }
-
-?>

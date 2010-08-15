@@ -184,5 +184,3 @@ class FormatacaoHelper extends AppHelper {
 	}
 
 }
-
-?>

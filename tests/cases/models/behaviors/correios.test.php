@@ -107,5 +107,3 @@ class CakePtbrCorreiosCase extends CakeTestCase {
 	}
 
 }
-
-?>

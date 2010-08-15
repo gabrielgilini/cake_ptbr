@@ -35,5 +35,3 @@ class CakePtbrInstallerShell extends Shell {
 		$this->out('Desculpe o transtorno.');
 	}
 }
-
-?>

@@ -166,5 +166,3 @@ class CorreiosBehavior extends ModelBehavior {
 	}
 
 }
-
-?>

@@ -28,4 +28,3 @@ class ProdutoFixture extends CakeTestFixture {
 		)
 	);
 }
-?>

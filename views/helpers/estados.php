@@ -28,5 +28,3 @@ class EstadosHelper extends AppHelper {
 		return $this->Form->select($fieldName, $options, $selected, $attributes);
 	}
 }
-
-?>

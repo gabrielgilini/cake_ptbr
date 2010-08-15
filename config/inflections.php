@@ -115,5 +115,3 @@ Inflector::rules('transliteration', array(
 ));
 
 unset($_uninflected, $_pluralIrregular);
-
-?>

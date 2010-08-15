@@ -54,5 +54,3 @@ class AjusteDataBehavior extends ModelBehavior {
 		return $saida;
 	}
 }
-
-?>

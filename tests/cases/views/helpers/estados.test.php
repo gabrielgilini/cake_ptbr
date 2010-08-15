@@ -57,5 +57,3 @@ class CakePtbrEstadosCase extends CakeTestCase {
 	}
 
 }
-
-?>

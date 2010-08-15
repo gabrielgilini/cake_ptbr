@@ -92,5 +92,3 @@ class CakePtbrFormatacaoCase extends CakeTestCase {
 		$this->assertEqual($this->Formatacao->moedaPorExtenso(1045763), 'um milhão, quarenta e cinco mil setecentos e sessenta e três reais');
 	}
 }
-
-?>

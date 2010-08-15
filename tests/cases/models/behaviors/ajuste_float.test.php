@@ -67,5 +67,3 @@ class CakePtbrAjusteFloat extends CakeTestCase {
 		$this->assertEqual(array('Produto' => array('nome' => 'Produto 4')), $result);
 	}
 }
-
-?>

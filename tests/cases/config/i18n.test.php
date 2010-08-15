@@ -43,5 +43,3 @@ class CakePtbrI18nCase extends CakeTestCase {
 		$this->assertEqual($result, $expected);
 	}
 }
-
-?>

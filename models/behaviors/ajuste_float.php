@@ -37,5 +37,3 @@ class AjusteFloatBehavior extends ModelBehavior {
 		return $results;
 	}
 }
-
-?>
