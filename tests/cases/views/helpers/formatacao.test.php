@@ -115,6 +115,7 @@ class CakePtbrFormatacaoCase extends CakeTestCase {
 		$this->assertEqual($this->Formatacao->moeda(-10), '(R$ 10,00)');
 		$this->assertEqual($this->Formatacao->moeda(-10.12), '(R$ 10,12)');
 		$this->assertEqual($this->Formatacao->moeda(-0.12), '(R$ 0,12)');
+		$this->assertEqual($this->Formatacao->moeda(-0.12, array('negative' => '-')), 'R$ -0,12');
 		$this->assertEqual($this->Formatacao->moeda(0), 'R$ 0,00');
 		$this->assertEqual($this->Formatacao->moeda(0.5), 'R$ 0,50');
 		$this->assertEqual($this->Formatacao->moeda(0.52), 'R$ 0,52');
