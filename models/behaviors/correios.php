@@ -150,7 +150,7 @@ class CorreiosBehavior extends ModelBehavior {
 			$retornoCorreios = mb_convert_encoding($retornoCorreios, $encoding, 'ISO-8859-1');
 		}
 		// Checar se o conteúdo está lá e reduzir o escopo de busca dos valores
-		if (!preg_match('/\<b\>CEP:\<\/b\>(.*)\<b\>Prazo de Entrega/', $retornoCorreios, $matches)) {
+		if (!preg_match('/\<b\>CEP:\<\/b\>(.*)\<b\>Prazo de Entrega/sm', $retornoCorreios, $matches)) {
 			return ERRO_CORREIOS_CONTEUDO_INVALIDO;
 		}
 		$escopoReduzido = $matches[1];
