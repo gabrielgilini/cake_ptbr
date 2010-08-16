@@ -107,7 +107,9 @@ class EstadoBrasileiroTestCase extends CakeTestCase {
 
 		$results = $this->EstadoBrasileiro->estadoPorSigla('SP');
 		$this->assertEqual($results, 'São Paulo');
-		$this->assertNotEqual($results, 'Sao Paulo');
+
+		$results = $this->EstadoBrasileiro->estadoPorSigla('XX');
+		$this->assertIdentical($results, false);
 	}
 
 /**
