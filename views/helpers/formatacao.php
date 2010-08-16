@@ -252,7 +252,7 @@ class FormatacaoHelper extends AppHelper {
 		if (empty($rt)) {
 			return 'zero';
 		}
-		return trim($rt);
+		return trim(str_replace('  ', ' ', $rt));
 	}
 
 }
