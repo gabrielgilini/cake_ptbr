@@ -77,27 +77,19 @@ class CorreiosBehavior extends ModelBehavior {
 			$avisoRecebimento = 'N';
 		}
 
-		// Requisição
-		$HttpSocket = new HttpSocket();
-		$uri = array(
-			'scheme' => 'http',
-			'host' => 'www.correios.com.br',
-			'port' => 80,
-			'path' => '/encomendas/precos/calculo.cfm',
-			'query' => array(
-				'resposta' => 'xml',
-				'servico' => $servico,
-				'cepOrigem' => $cepOrigem,
-				'cepDestino' => $cepDestino,
-				'peso' => $peso,
-				'MaoPropria' => $maoPropria,
-				'valorDeclarado' => $valorDeclarado,
-				'avisoRecebimento' => $avisoRecebimento
-			)
+		$query = array(
+			'resposta' => 'xml',
+			'servico' => $servico,
+			'cepOrigem' => $cepOrigem,
+			'cepDestino' => $cepDestino,
+			'peso' => $peso,
+			'MaoPropria' => $maoPropria,
+			'valorDeclarado' => $valorDeclarado,
+			'avisoRecebimento' => $avisoRecebimento
 		);
-		$retornoCorreios = trim($HttpSocket->get($uri));
-		if ($HttpSocket->response['status']['code'] != 200) {
-			return ERRO_CORREIOS_FALHA_COMUNICACAO;
+		$retornoCorreios = $this->_requisitaUrl('/encomendas/precos/calculo.cfm', 'get', $query);
+		if (is_integer($retornoCorreios)) {
+			return $retornoCorreios;
 		}
 		$Xml = new Xml($retornoCorreios);
 		$infoCorreios = $Xml->toArray();
@@ -130,14 +122,6 @@ class CorreiosBehavior extends ModelBehavior {
 			return ERRO_CORREIOS_PARAMETROS_INVALIDOS;
 		}
 
-		// Requisição
-		$HttpSocket = new HttpSocket();
-		$uri = array(
-			'scheme' => 'http',
-			'host' => 'www.correios.com.br',
-			'port' => 80,
-			'path' => '/encomendas/prazo/prazo.cfm',
-		);
 		$data = array(
 			'resposta' => 'paginaCorreios',
 			'servico' => CORREIOS_SEDEX,
@@ -155,9 +139,9 @@ class CorreiosBehavior extends ModelBehavior {
 			'embalagem' => 116600055,
 			'valorD' => ''
 		);
-		$retornoCorreios = $HttpSocket->post($uri, $data);
-		if ($HttpSocket->response['status']['code'] != 200) {
-			return ERRO_CORREIOS_FALHA_COMUNICACAO;
+		$retornoCorreios = $this->_requisitaUrl('/encomendas/prazo/prazo.cfm', 'post', $data);
+		if (is_integer($retornoCorreios)) {
+			return $retornoCorreios;
 		}
 
 		// Convertendo para o encoding da aplicação. Isto só funciona se a extensão multibyte estiver ativa
@@ -192,6 +176,35 @@ class CorreiosBehavior extends ModelBehavior {
  */
 	function _validaCep($cep) {
 		return (bool)preg_match('/^\d{5}\-?\d{3}$/', $cep);
+	}
+
+/**
+ * Requisita dados dos Correios
+ *
+ * @param string $url Caminho relativo da página nos Correios
+ * @param string $method Método de requisição (POST/GET)
+ * @param array $query Dados para enviar na página
+ * @return string Página solicitada
+ * @access protected
+ */
+	function _requisitaUrl($url, $method, $query) {
+		$HttpSocket = new HttpSocket();
+		$uri = array(
+			'scheme' => 'http',
+			'host' => 'www.correios.com.br',
+			'port' => 80,
+			'path' => $url
+		);
+		if ($method === 'get') {
+			$uri['query'] = $query;
+			$retornoCorreios = trim($HttpSocket->get($uri));
+		} else {
+			$retornoCorreios = $HttpSocket->post($uri, $query);
+		}
+		if ($HttpSocket->response['status']['code'] != 200) {
+			return ERRO_CORREIOS_FALHA_COMUNICACAO;
+		}
+		return $retornoCorreios;
 	}
 
 }
