@@ -13,6 +13,10 @@
 App::import('Core', 'Model');
 App::import('Behavior', 'CakePtbr.AjusteData');
 
+/**
+ * CakePtbrNoticia
+ *
+ */
 class CakePtbrNoticia extends Model {
 
 /**
@@ -42,6 +46,10 @@ class CakePtbrNoticia extends Model {
 	}
 }
 
+/**
+ * CakePtbrNoticiaSemNada
+ *
+ */
 class CakePtbrNoticiaSemNada extends CakePtbrNoticia {
 
 /**
@@ -62,6 +70,10 @@ class CakePtbrNoticiaSemNada extends CakePtbrNoticia {
 
 }
 
+/**
+ * CakePtbrNoticiaString
+ *
+ */
 class CakePtbrNoticiaString extends CakePtbrNoticia {
 
 /**
@@ -82,6 +94,10 @@ class CakePtbrNoticiaString extends CakePtbrNoticia {
 
 }
 
+/**
+ * CakePtbrNoticiaArrayVazio
+ *
+ */
 class CakePtbrNoticiaArrayVazio extends CakePtbrNoticia {
 
 /**
@@ -102,6 +118,10 @@ class CakePtbrNoticiaArrayVazio extends CakePtbrNoticia {
 
 }
 
+/**
+ * CakePtbrNoticiaArrayComCampo
+ *
+ */
 class CakePtbrNoticiaArrayComCampo extends CakePtbrNoticia {
 
 /**
@@ -122,6 +142,10 @@ class CakePtbrNoticiaArrayComCampo extends CakePtbrNoticia {
 
 }
 
+/**
+ * CakePtbrNoticiaArrayComCampos
+ *
+ */
 class CakePtbrNoticiaArrayComCampos extends CakePtbrNoticia {
 
 /**
@@ -141,6 +165,10 @@ class CakePtbrNoticiaArrayComCampos extends CakePtbrNoticia {
 	var $actsAs = array('CakePtbr.AjusteData' => array('data', 'publicado'));
 }
 
+/**
+ * AjusteData Test Case
+ *
+ */
 class CakePtbrAjusteData extends CakeTestCase {
 
 /**

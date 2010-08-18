@@ -12,6 +12,10 @@
 
 include dirname(dirname(dirname(dirname(__FILE__)))) . DS . 'config' . DS . 'inflections.php';
 
+/**
+ * Inflections Test Case
+ *
+ */
 class CakePtbrInflectionsCase extends CakeTestCase {
 
 /**

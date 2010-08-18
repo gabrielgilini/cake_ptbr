@@ -10,6 +10,11 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
+/**
+ * EstadoBrasileiro
+ *
+ * @link http://wiki.github.com/jrbasso/cake_ptbr/model-estadobrasileiro
+ */
 class EstadoBrasileiro extends AppModel {
 
 /**

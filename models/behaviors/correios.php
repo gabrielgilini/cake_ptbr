@@ -27,6 +27,11 @@ define('ERRO_CORREIOS_CONTEUDO_INVALIDO', -1003);
 
 App::import('Core', array('HttpSocket', 'Xml'));
 
+/**
+ * CorreiosBehavior
+ *
+ * @link http://wiki.github.com/jrbasso/cake_ptbr/behavior-correios
+ */
 class CorreiosBehavior extends ModelBehavior {
 
 /**

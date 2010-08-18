@@ -13,6 +13,10 @@
 App::import('Core', 'Model');
 App::import('Behavior', 'CakePtbr.AjusteFloat');
 
+/**
+ * Produto
+ *
+ */
 class Produto extends CakeTestModel {
 
 /**
@@ -32,6 +36,10 @@ class Produto extends CakeTestModel {
 	var $actsAs = array('CakePtbr.AjusteFloat');
 }
 
+/**
+ * AjusteFloat Test Case
+ *
+ */
 class CakePtbrAjusteFloat extends CakeTestCase {
 
 /**

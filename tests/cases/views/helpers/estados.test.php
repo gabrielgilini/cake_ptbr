@@ -13,6 +13,10 @@
 App::import('Helper', array('CakePtbr.Estados', 'Form', 'Html'));
 App::import('Vendor', 'CakePtbr.Estados');
 
+/**
+ * Controller Test
+ *
+ */
 class ControllerTestController extends Controller {
 
 /**
@@ -32,6 +36,10 @@ class ControllerTestController extends Controller {
 	var $uses = null;
 }
 
+/**
+ * Estado Test Case
+ *
+ */
 class CakePtbrEstadosCase extends CakeTestCase {
 
 /**

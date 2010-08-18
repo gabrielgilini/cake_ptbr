@@ -10,6 +10,10 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
+/**
+ * Inflexao
+ *
+ */
 class Inflexao {
 
 /**

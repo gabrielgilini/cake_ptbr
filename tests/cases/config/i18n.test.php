@@ -12,6 +12,10 @@
 
 include dirname(dirname(dirname(dirname(__FILE__)))) . DS . 'config' . DS . 'traducao_core.php';
 
+/**
+ * I18n Test Case
+ *
+ */
 class CakePtbrI18nCase extends CakeTestCase {
 
 /**

@@ -10,6 +10,11 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
+/**
+ * AjusteDataBehavior
+ *
+ * @link http://wiki.github.com/jrbasso/cake_ptbr/behavior-ajustedata
+ */
 class AjusteDataBehavior extends ModelBehavior {
 
 /**

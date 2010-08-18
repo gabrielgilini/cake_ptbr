@@ -10,6 +10,11 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
+/**
+ * Estado Helper
+ *
+ * @link http://wiki.github.com/jrbasso/cake_ptbr/helper-estados
+ */
 class EstadosHelper extends AppHelper {
 
 /**

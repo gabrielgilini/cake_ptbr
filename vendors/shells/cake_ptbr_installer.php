@@ -11,6 +11,10 @@
  */
 
 if (App::import('Vendor', 'PluginManager.Installer')) {
+/**
+ * CakePtbrInstaller
+ *
+ */
 	class CakePtbrInstaller extends InstallerPM {
 /**
  * Instala a aplicação
@@ -33,6 +37,10 @@ if (App::import('Vendor', 'PluginManager.Installer')) {
 	}
 }
 
+/**
+ * CakePtbrInstaller Shell
+ *
+ */
 class CakePtbrInstallerShell extends Shell {
 
 /**

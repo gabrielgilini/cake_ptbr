@@ -12,6 +12,10 @@
 
 App::import('Helper', array('CakePtbr.Formatacao', 'Time', 'Number'));
 
+/**
+ * Formatacao Test Case
+ *
+ */
 class CakePtbrFormatacaoCase extends CakeTestCase {
 
 /**

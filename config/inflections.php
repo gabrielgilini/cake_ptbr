@@ -8,6 +8,7 @@
  * @filesource
  * @author        Juan Basso <jrbasso@gmail.com>
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link          http://wiki.github.com/jrbasso/cake_ptbr/inflections
  */
 
 // Alteração do inflector

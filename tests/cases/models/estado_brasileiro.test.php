@@ -12,6 +12,10 @@
 
 App::import('Model', 'CakePtbr.EstadoBrasileiro');
 
+/**
+ * EstadoBrasileiro Test Case
+ *
+ */
 class EstadoBrasileiroTestCase extends CakeTestCase {
 
 /**

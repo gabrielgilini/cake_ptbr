@@ -12,6 +12,10 @@
 
 require dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__))))))) . DS . 'vendors' . DS . 'shells' . DS . 'templates' . DS . 'default' . DS . 'inflexao.php';
 
+/**
+ * Inflexao
+ *
+ */
 class InflexaoTest extends CakeTestCase {
 
 /**

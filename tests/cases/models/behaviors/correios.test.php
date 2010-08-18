@@ -18,6 +18,10 @@ Mock::generatePartial(
 	array('_requisitaUrl')
 );
 
+/**
+ * CakePtbr
+ *
+ */
 class CakePtbr extends Model {
 
 /**
@@ -45,6 +49,10 @@ class CakePtbr extends Model {
 	var $actsAs = array('CakePtbr.Correios');
 }
 
+/**
+ * Correios Test Case
+ *
+ */
 class CakePtbrCorreiosCase extends CakeTestCase {
 
 /**
